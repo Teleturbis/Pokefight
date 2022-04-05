@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+import "./assets/styles/styles.css";
+
+import Login from "./components/userhandling/Login";
+import MainMenu from "./components/main/MainMenu";
+
 function App() {
   const [user, setUser] = useState({
     username: "",
@@ -22,6 +27,8 @@ function App() {
     localStorage.setItem("token", value.token);
   }
 
+  console.log(user);
+
   useEffect(() => {
     if (localStorage.getItem("userName")) {
       setUser({
@@ -33,7 +40,15 @@ function App() {
     }
   }, []);
 
-  return <div></div>;
+  return (
+    <div>
+      {user.loggedIn ? (
+        <MainMenu user={user} changeUser={changeUser} />
+      ) : (
+        <Login changeUser={changeUser} />
+      )}
+    </div>
+  );
 }
 
 export default App;

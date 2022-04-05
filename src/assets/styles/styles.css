@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap");
+
+:root {
+  --primary: #0a285f;
+  --secondary: #0075be;
+  --tertiary: #1348ab;
+
+  --text: #ffcc00;
+  --textShadow: #61892f;
+
+  /* font-family: "DotGothic16", sans-serif; */
+
+  font-family: "Press Start 2P", cursive;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  background-color: var(--primary);
+}
+
+body {
+  color: var(--text);
+  font-size: 1.6rem;
+  background-color: var(--primary);
+}
+
+/*******************************/
+/*    ****    LOGIN    ****    */
+/*******************************/
+
+.login-div {
+  width: 100%;
+  height: 100vh;
+
+  background-image: url("https://www.mogelpower.de/images/loesungen/pokemon_bf/04_town04.gif");
+  background-size: 200%;
+  background-position: left;
+
+  animation: backgroundanimation 60s linear infinite alternate both;
+}
+
+@keyframes backgroundanimation {
+  from {
+    background-position: left;
+  }
+  to {
+    background-position: right;
+  }
+}
+
+.login-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.63);
+}
+
+.login-overlay > h1 {
+  font-size: 5rem;
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.login-contentdiv {
+  width: 30%;
+  height: 40%;
+  background-color: var(--primary);
+  border-radius: 0.25rem;
+
+  margin: 0 auto;
+  margin-top: 10%;
+
+  padding: 2rem;
+}
+
+.login-togglediv {
+  display: flex;
+  justify-content: center;
+}
+
+.login-mode-button {
+  color: var(--text);
+  background-color: transparent;
+  border: 0 solid var(--text);
+
+  width: 25rem;
+
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+
+  padding-bottom: 1rem;
+  margin: 0 2rem;
+  margin-bottom: 1rem;
+
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.loginmode {
+  border-bottom: 2px solid var(--text);
+}
+
+.login-mode-button:hover {
+  letter-spacing: 0.5rem;
+}
+
+.login-mode-button:active {
+  letter-spacing: 0.3rem;
+}
+
+.login-input {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.login-element {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid var(--text);
+  background-color: var(--tertiary);
+  color: var(--text);
+  font-size: 1.75rem;
+  font-family: "DotGothic16";
+  letter-spacing: 0.2rem;
+}
+
+.login-button {
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.login-button:hover {
+  background-color: #0a285f;
+  letter-spacing: 0.5rem;
+}
+
+.login-button:active {
+  letter-spacing: 0.3rem;
+}
+
+/******************************/
+/*    ****    GAME    ****    */
+/******************************/
