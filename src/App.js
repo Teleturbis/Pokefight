@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./assets/styles/styles.css";
 
 import Login from "./components/userhandling/Login";
-import MainMenu from "./components/main/MainMenu";
+import InGame from "./components/main/InGame";
 
 function App() {
   const [user, setUser] = useState({
@@ -43,7 +43,7 @@ function App() {
   return (
     <div>
       {user.loggedIn ? (
-        <MainMenu user={user} changeUser={changeUser} />
+        <InGame user={user} changeUser={changeUser} />
       ) : (
         <Login changeUser={changeUser} />
       )}

@@ -4,6 +4,8 @@
   --primary: #0a285f;
   --secondary: #0075be;
   --tertiary: #1348ab;
+  
+  --transparent: #0075bece;
 
   --text: #ffcc00;
   --textShadow: #61892f;
@@ -29,6 +31,7 @@ body {
   color: var(--text);
   font-size: 1.6rem;
   background-color: var(--primary);
+  overflow: hidden;
 }
 
 /*******************************/
@@ -39,7 +42,7 @@ body {
   width: 100%;
   height: 100vh;
 
-  background-image: url("https://www.mogelpower.de/images/loesungen/pokemon_bf/04_town04.gif");
+  background-image: url("../unbenannt.png");
   background-size: 200%;
   background-position: left;
 
@@ -72,6 +75,7 @@ body {
   height: 40%;
   background-color: var(--primary);
   border-radius: 0.25rem;
+  border: 2px solid var(--text);
 
   margin: 0 auto;
   margin-top: 10%;
@@ -149,3 +153,150 @@ body {
 /******************************/
 /*    ****    GAME    ****    */
 /******************************/
+
+.main-game-div {
+  width: 100%;
+  height: 100vh;
+
+  position: relative;
+}
+
+.game-div {
+  background-image: url("../unbenannt.png");
+  background-size: 350%;
+  background-position-x: 0;
+  background-position-y: 99%;
+  filter: contrast(1.25);
+
+  width: 95%;
+  height: 95%;
+  margin: auto;
+  margin-top: 1%;
+
+  border-radius: 0.5rem;
+}
+
+.game-overlay {
+  width: 95%;
+  height: 95%;
+
+  position: absolute;
+  top: 0;
+  left: 2.5%;
+
+  color: var(--text);
+}
+
+.inv-btn {
+  font-size: 7rem;
+  margin: 1rem;
+}
+
+.information-div {
+  background-color: var(--secondary);
+
+  width: 30rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.5rem 1rem;
+
+  border: 2px solid var(--primary);
+
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.menu-btn {
+  font-size: 2.5rem;
+}
+
+.money {
+  display: flex;
+  align-items: center;
+}
+
+.money-symbole {
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+}
+
+.map-btn {
+  font-size: 7rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+/******************************/
+/*    ****    CHAT    ****    */
+/******************************/
+
+.chat-main-div {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+
+  background-color: var(--transparent);
+  width: 25%;
+  height: 40%;
+  padding: 1rem;
+
+  border-radius: 0.25rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chat-messages-div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.chat-message {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.chat-message-content {
+  margin-left: 0.5rem;
+}
+
+.chat-userinput {
+  display: flex;
+  justify-content: space-around;
+}
+
+.chat-userinput-input {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid var(--text);
+  background-color: var(--tertiary);
+  color: var(--text);
+  font-size: 1.25rem;
+  font-family: "Press Start 2P";
+}
+
+.chat-userinput-button {
+  cursor: pointer;
+  transition: 100ms;
+  width: 10rem;
+}
+
+.chat-userinput-button:hover {
+  background-color: #0a285f;
+  letter-spacing: 0.5rem;
+}
+
+.chat-userinput-button:active {
+  letter-spacing: 0.3rem;
+}
