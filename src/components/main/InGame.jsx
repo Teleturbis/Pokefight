@@ -61,10 +61,17 @@ export default function MainMenu({ user, changeUser }) {
         {inventaryVisible ? <Inventar /> : null}
 
         {menuVisible ? (
-          <div>
-            <div>
+          <div
+            className="game-menu-div"
+            onClick={(e) =>
+              e.target.className === "game-menu-div"
+                ? setMenuVisible(false)
+                : null
+            }
+          >
+            <div className="game-menu-content">
               <h1>Menu</h1>
-              <h2>Hey {user.userName}!</h2>
+              <h2>Hey {user.username}!</h2>
               <button onClick={() => handleLogout()}>Log Out</button>
               <button onClick={() => handleDelete()}>Delete Account</button>
               <button onClick={() => handleChangeName()}>
