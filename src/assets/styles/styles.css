@@ -42,7 +42,7 @@ body {
   width: 100%;
   height: 100vh;
 
-  background-image: url("../unbenannt.png");
+  /* background-image: url("../unbenannt.png"); */
   background-size: 200%;
   background-position: left;
 
@@ -162,7 +162,7 @@ body {
 }
 
 .game-div {
-  background-image: url("../unbenannt.png");
+  /* background-image: url("../unbenannt.png"); */
   background-size: 350%;
   background-position-x: 0;
   background-position-y: 99%;
