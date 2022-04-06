@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import "./assets/styles/styles.css";
+import './assets/styles/styles.css';
 
-import Login from "./components/userhandling/Login";
-import InGame from "./components/main/InGame";
+import Login from './components/userhandling/Login';
+import InGame from './components/main/InGame';
 
 function App() {
   const [user, setUser] = useState({
-    username: "",
-    userID: "",
+    username: '',
+    userID: '',
     loggedIn: false,
-    token: "",
+    token: ''
   });
 
   function changeUser(value) {
@@ -18,24 +18,24 @@ function App() {
       username: value.username,
       userID: value.userid,
       loggedIn: value.loggedIn,
-      token: value.token,
+      token: value.token
     });
 
-    localStorage.setItem("userName", value.username);
-    localStorage.setItem("userID", value.userid);
-    localStorage.setItem("loggedIn", value.loggedIn);
-    localStorage.setItem("token", value.token);
+    localStorage.setItem('userName', value.username);
+    localStorage.setItem('userID', value.userid);
+    localStorage.setItem('loggedIn', value.loggedIn);
+    localStorage.setItem('token', value.token);
   }
 
   console.log(user);
 
   useEffect(() => {
-    if (localStorage.getItem("userName")) {
+    if (localStorage.getItem('userName')) {
       setUser({
         username: localStorage.userName,
         userID: localStorage.userID,
         loggedIn: localStorage.loggedIn,
-        token: localStorage.token,
+        token: localStorage.token
       });
     }
   }, []);

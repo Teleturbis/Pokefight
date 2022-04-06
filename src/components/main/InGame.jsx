@@ -1,12 +1,31 @@
-import React, { useState } from "react";
-import { GiSchoolBag, GiTreasureMap, GiTwoCoins } from "react-icons/gi";
-import { FiMenu } from "react-icons/fi";
+import React, { useEffect, useRef, useState } from 'react';
+import { GiSchoolBag, GiTreasureMap, GiTwoCoins } from 'react-icons/gi';
+import { FiMenu } from 'react-icons/fi';
 
-import Chat from "./Chat";
-import Inventar from "../gamElements/Inventar";
+import Chat from './Chat';
+import Inventar from '../gamElements/Inventar';
+import Game from '../../Game';
 
 export default function MainMenu({ user, changeUser }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
+
+  let game = useRef();
+  // let client = useRef();
+
+  useEffect(() => {
+    if (!game.current) {
+      game.current = new Game(
+        () => {},
+        () => {}
+      );
+    }
+    // client.current = new Client(
+    //   setIsConnected,
+    //   setElapsedTics,
+    //   game.current,
+    //   logAction
+    // );
+  }, []);
 
   return (
     <div className="main-game-div">
