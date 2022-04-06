@@ -4,7 +4,7 @@
   --primary: #0a285f;
   --secondary: #0075be;
   --tertiary: #1348ab;
-  
+
   --transparent: #0075bece;
 
   --text: #ffcc00;
@@ -190,6 +190,12 @@ body {
 .inv-btn {
   font-size: 7rem;
   margin: 1rem;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.inv-btn:hover {
+  transform: scale(1.2);
 }
 
 .information-div {
@@ -229,6 +235,28 @@ body {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
+  z-index: 11;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.map-btn:hover {
+  transform: scale(1.2);
+}
+
+.game-map-div {
+  background-color: rgba(0, 0, 0, 0.712);
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.game-map {
+  display: block;
+  height: 100%;
+  margin: auto;
 }
 
 /******************************/
