@@ -1,0 +1,459 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap");
+
+:root {
+  --primary: #0a285f;
+  --secondary: #0075be;
+  --tertiary: #1348ab;
+
+  --transparent: #0075bece;
+
+  --text: #ffcc00;
+  --textShadow: #61892f;
+
+  /* font-family: "DotGothic16", sans-serif; */
+
+  font-family: "Press Start 2P", cursive;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  background-color: var(--primary);
+}
+
+body {
+  color: var(--text);
+  font-size: 1.6rem;
+  background-color: var(--primary);
+  overflow: hidden;
+}
+
+/*******************************/
+/*    ****    LOGIN    ****    */
+/*******************************/
+
+.login-div {
+  width: 100%;
+  height: 100vh;
+
+  background-image: url("../unbenannt.png");
+  background-size: 200%;
+  background-position: left;
+
+  animation: backgroundanimation 60s linear infinite alternate both;
+}
+
+@keyframes backgroundanimation {
+  from {
+    background-position: left;
+  }
+  to {
+    background-position: right;
+  }
+}
+
+.login-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.63);
+}
+
+.login-overlay > h1 {
+  font-size: 5rem;
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.login-contentdiv {
+  width: 30%;
+  height: 40%;
+  background-color: var(--primary);
+  border-radius: 0.25rem;
+  border: 2px solid var(--text);
+
+  margin: 0 auto;
+  margin-top: 10%;
+
+  padding: 2rem;
+}
+
+.login-togglediv {
+  display: flex;
+  justify-content: center;
+}
+
+.login-mode-button {
+  color: var(--text);
+  background-color: transparent;
+  border: 0 solid var(--text);
+
+  width: 25rem;
+
+  font-family: "Press Start 2P";
+  font-size: 2rem;
+
+  padding-bottom: 1rem;
+  margin: 0 2rem;
+  margin-bottom: 1rem;
+
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.loginmode {
+  border-bottom: 2px solid var(--text);
+}
+
+.login-mode-button:hover {
+  letter-spacing: 0.5rem;
+}
+
+.login-mode-button:active {
+  letter-spacing: 0.3rem;
+}
+
+.login-input {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.login-element {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid var(--text);
+  background-color: var(--tertiary);
+  color: var(--text);
+  font-size: 1.75rem;
+  font-family: "DotGothic16";
+  letter-spacing: 0.2rem;
+}
+
+.login-button {
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.login-button:hover {
+  background-color: #0a285f;
+  letter-spacing: 0.5rem;
+}
+
+.login-button:active {
+  letter-spacing: 0.3rem;
+}
+
+/******************************/
+/*    ****    GAME    ****    */
+/******************************/
+
+.main-game-div {
+  width: 100%;
+  height: 100vh;
+
+  position: relative;
+}
+
+.game-div {
+  background-image: url("../unbenannt.png");
+  background-size: 350%;
+  background-position-x: 0;
+  background-position-y: 99%;
+  filter: contrast(1.25);
+
+  width: 95%;
+  height: 95%;
+  margin: auto;
+  margin-top: 1%;
+
+  border-radius: 0.5rem;
+}
+
+.game-overlay {
+  width: 95%;
+  height: 95%;
+
+  position: absolute;
+  top: 0;
+  left: 2.5%;
+
+  color: var(--text);
+}
+
+.inv-btn {
+  font-size: 7rem;
+  margin: 1rem;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.inv-btn:hover {
+  transform: scale(1.2);
+}
+
+.information-div {
+  background-color: var(--secondary);
+
+  width: 30rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.5rem 1rem;
+
+  border: 2px solid var(--primary);
+
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.menu-btn {
+  font-size: 2.5rem;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  transform: scale(1.2);
+}
+
+.money {
+  display: flex;
+  align-items: center;
+}
+
+.money-symbole {
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+}
+
+.map-btn {
+  font-size: 7rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 11;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.map-btn:hover {
+  transform: scale(1.2);
+}
+
+.game-map-div {
+  background-color: rgba(0, 0, 0, 0.712);
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.game-map {
+  display: block;
+  height: 100%;
+  margin: auto;
+}
+
+.game-menu-div {
+  background-color: rgba(0, 0, 0, 0.75);
+
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 12;
+}
+
+.game-menu-content {
+  background-color: var(--primary);
+  width: 25%;
+  height: 40%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 0.25rem;
+
+  padding: 2rem;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.game-menu-content > h1 {
+  padding: 2rem;
+}
+
+.game-menu-content > h2 {
+  padding: 1rem;
+  padding-bottom: 4rem;
+}
+
+.game-menu-content > button {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid var(--text);
+  background-color: var(--tertiary);
+  color: var(--text);
+  font-size: 1.75rem;
+  font-family: "DotGothic16";
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  transition: 100ms;
+
+  width: 80%;
+}
+
+.game-menu-content > button:hover {
+  background-color: #0a285f;
+  letter-spacing: 0.5rem;
+}
+
+.game-menu-content > button:active {
+  letter-spacing: 0.3rem;
+}
+
+.arena-figth-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 15;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.938);
+}
+
+.choosePokemon {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.choosePokemon-card {
+  background-color: var(--secondary);
+  width: 15%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+
+  font-size: 1.25rem;
+  letter-spacing: 0.1rem;
+
+  cursor: pointer;
+
+  transition: 100ms;
+}
+
+.choosePokemon-card:hover {
+  transform: scale(1.025);
+}
+
+.choosePokemon-card > img {
+  width: 60%;
+  margin: 2rem 0;
+  background-color: var(--primary);
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.choosePokemon-card > h1 {
+  margin: 1rem 0;
+}
+
+.arenainFight-main {
+  width: 100%;
+  height: 100%;
+
+  background-color: tomato;
+}
+
+/******************************/
+/*    ****    CHAT    ****    */
+/******************************/
+
+.chat-main-div {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+
+  background-color: var(--transparent);
+  width: 25%;
+  height: 40%;
+  padding: 1rem;
+
+  border-radius: 0.25rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chat-messages-div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.chat-message {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.chat-message-content {
+  margin-left: 0.5rem;
+}
+
+.chat-userinput {
+  display: flex;
+  justify-content: space-around;
+}
+
+.chat-userinput-input {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid var(--text);
+  background-color: var(--tertiary);
+  color: var(--text);
+  font-size: 1.25rem;
+  font-family: "Press Start 2P";
+}
+
+.chat-userinput-button {
+  cursor: pointer;
+  transition: 100ms;
+  width: 10rem;
+}
+
+.chat-userinput-button:hover {
+  background-color: #0a285f;
+  letter-spacing: 0.5rem;
+}
+
+.chat-userinput-button:active {
+  letter-spacing: 0.3rem;
+}
