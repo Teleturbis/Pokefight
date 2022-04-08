@@ -5,13 +5,19 @@ import "./assets/styles/styles.css";
 import Login from "./components/userhandling/Login";
 import InGame from "./components/main/InGame";
 
+import mainTheme from "./assets/sounds/background/theme/theme.mp3";
+
 function App() {
+  const audio = new Audio(mainTheme);
+
   const [user, setUser] = useState({
     username: "",
     userID: "",
     loggedIn: false,
     token: "",
   });
+
+  const [musicPlaying, setMusicPlaying] = useState(false);
 
   function changeUser(value) {
     setUser({
@@ -29,6 +35,19 @@ function App() {
 
   console.log(user);
 
+  function playTheme() {
+    if (!musicPlaying) {
+      audio.volume = 0.25;
+      audio.play();
+    }
+    setMusicPlaying(true);
+  }
+
+  function audioMainTheme() {
+    console.log(123);
+    audio.pause();
+  }
+
   useEffect(() => {
     if (localStorage.getItem("userName")) {
       setUser({
@@ -41,9 +60,18 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div
+      onKeyDown={() => {
+        playTheme();
+        console.log(23);
+      }}
+    >
       {user.loggedIn ? (
-        <InGame user={user} changeUser={changeUser} />
+        <InGame
+          audioMainTheme={audioMainTheme}
+          user={user}
+          changeUser={changeUser}
+        />
       ) : (
         <Login changeUser={changeUser} />
       )}

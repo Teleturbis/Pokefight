@@ -1,23 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GiSchoolBag, GiTreasureMap, GiTwoCoins } from "react-icons/gi";
 import { FiMenu } from "react-icons/fi";
 
 import Chat from "./Chat";
 import Inventar from "../gamElements/Inventar";
+import ArenaFight from "./ArenaFight";
 
 const map = require("../../assets/unbenannt.png");
 
-export default function MainMenu({ user, changeUser }) {
+export default function MainMenu({ user, changeUser, audioMainTheme }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
   const [mapVisible, setMapVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [inArenaFight, setInArenaFight] = useState(false);
 
   function handleDelete() {}
 
   function handleChangeName() {}
 
   function handleLogout() {
+    audioMainTheme();
     changeUser({ username: "", token: "", loggedIn: false });
+  }
+
+  function changeSetInArena() {
+    setInArenaFight(!inArenaFight);
   }
 
   return (
@@ -80,6 +87,10 @@ export default function MainMenu({ user, changeUser }) {
             </div>
           </div>
         ) : null}
+
+        {inArenaFight && (
+          <ArenaFight changeSetInArena={changeSetInArena} user={user} />
+        )}
       </div>
     </div>
   );

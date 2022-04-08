@@ -218,6 +218,12 @@ body {
 
 .menu-btn {
   font-size: 2.5rem;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  transform: scale(1.2);
 }
 
 .money {
@@ -319,6 +325,67 @@ body {
 
 .game-menu-content > button:active {
   letter-spacing: 0.3rem;
+}
+
+.arena-figth-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 15;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.938);
+}
+
+.choosePokemon {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.choosePokemon-card {
+  background-color: var(--secondary);
+  width: 15%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+
+  font-size: 1.25rem;
+  letter-spacing: 0.1rem;
+
+  cursor: pointer;
+
+  transition: 100ms;
+}
+
+.choosePokemon-card:hover {
+  transform: scale(1.025);
+}
+
+.choosePokemon-card > img {
+  width: 60%;
+  margin: 2rem 0;
+  background-color: var(--primary);
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.choosePokemon-card > h1 {
+  margin: 1rem 0;
+}
+
+.arenainFight-main {
+  width: 100%;
+  height: 100%;
+
+  background-color: tomato;
 }
 
 /******************************/
