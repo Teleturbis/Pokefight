@@ -1,0 +1,1742 @@
+[
+  {
+    "width": 256,
+    "height": 352,
+    "src": "bridge_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "bridge_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "bridge_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "bridge_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_center_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_center_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_center_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_center_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_centerBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_centerBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_centerBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_centerBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_corner_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_corner_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_corner_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_corner_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_cornerBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_cornerBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_cornerBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_cornerBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_door_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_door_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_door_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_door_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorWindows_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorWindows_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorWindows_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorWindows_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorWindowsBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorWindowsBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorWindowsBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_doorWindowsBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_window_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_window_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_window_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_window_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windowBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windowBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windowBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windowBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windows_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windows_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windows_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windows_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windowsBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windowsBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windowsBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "building_windowsBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_bend_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_bend_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_bend_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_bend_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_center_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_center_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_center_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_center_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_corner_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_corner_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_corner_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_corner_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_gate_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_gate_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_gate_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_gate_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_gateOpen_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_gateOpen_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_gateOpen_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_gateOpen_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_slope_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_slope_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_slope_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_slope_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_tower_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_tower_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_tower_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_tower_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerBrown_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerBrown_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerBrown_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerBrown_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerGreen_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerGreen_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerGreen_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerGreen_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerPurple_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerPurple_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerPurple_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_towerPurple_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_wall_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_wall_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_wall_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_wall_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_window_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_window_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_window_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "castle_window_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "dirt_center_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "dirt_center_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "dirt_center_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "dirt_center_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "dirt_low_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "dirt_low_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "dirt_low_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "dirt_low_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_center_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_center_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_center_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_center_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_corner_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_corner_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_corner_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_corner_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_path_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_path_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_path_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_path_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathBend_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathBend_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathBend_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathBend_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathCorner_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathCorner_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathCorner_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathCorner_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathCrossing_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathCrossing_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathCrossing_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathCrossing_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathEnd_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathEnd_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathEnd_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathEnd_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathEndSquare_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathEndSquare_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathEndSquare_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathEndSquare_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathSlope_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathSlope_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathSlope_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathSlope_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathSplit_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathSplit_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathSplit_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_pathSplit_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_river_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_river_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_river_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_river_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverBend_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverBend_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverBend_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverBend_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverBridge_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverBridge_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverBridge_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverBridge_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverCorner_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverCorner_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverCorner_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverCorner_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverCrossing_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverCrossing_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverCrossing_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverCrossing_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverEnd_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverEnd_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverEnd_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverEnd_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverEndSquare_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverEndSquare_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverEndSquare_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverEndSquare_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverSlope_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverSlope_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverSlope_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverSlope_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverSplit_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverSplit_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverSplit_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_riverSplit_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slope_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slope_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slope_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slope_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slopeConcave_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slopeConcave_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slopeConcave_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slopeConcave_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slopeConvex_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slopeConvex_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slopeConvex_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_slopeConvex_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_water_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_water_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_water_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_water_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterConcave_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterConcave_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterConcave_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterConcave_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterConvex_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterConvex_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterConvex_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterConvex_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterRiver_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterRiver_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterRiver_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "grass_waterRiver_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "rocks_dirt_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "rocks_dirt_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "rocks_dirt_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "rocks_dirt_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "rocks_grass_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "rocks_grass_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "rocks_grass_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "rocks_grass_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchBrown_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchBrown_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchBrown_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchBrown_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchGreen_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchGreen_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchGreen_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchGreen_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchPurple_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchPurple_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchPurple_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_churchPurple_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableBrown_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableBrown_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableBrown_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableBrown_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableGreen_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableGreen_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableGreen_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gableGreen_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gablePurple_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gablePurple_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gablePurple_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_gablePurple_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointBrown_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointBrown_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointBrown_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointBrown_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointGreen_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointGreen_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointGreen_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointGreen_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointPurple_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointPurple_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointPurple_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_pointPurple_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundBrown_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundBrown_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundBrown_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundBrown_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedBrown_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedBrown_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedBrown_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedBrown_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedGreen_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedGreen_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedGreen_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedGreen_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedPurple_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedPurple_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedPurple_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundedPurple_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundGreen_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundGreen_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundGreen_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundGreen_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundPurple_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundPurple_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundPurple_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_roundPurple_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantBeige_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantBeige_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantBeige_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantBeige_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantBrown_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantBrown_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantBrown_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantBrown_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantGreen_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantGreen_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantGreen_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantGreen_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantPurple_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantPurple_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantPurple_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "roof_slantPurple_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_arch_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_arch_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_arch_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_arch_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_high_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_high_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_high_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_high_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_low_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_low_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_low_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "structure_low_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "tree_multiple_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "tree_multiple_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "tree_multiple_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "tree_multiple_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "tree_single_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "tree_single_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "tree_single_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "tree_single_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "water_center_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "water_center_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "water_center_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "water_center_W.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "water_fall_N.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "water_fall_E.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "water_fall_S.png"
+  },
+  {
+    "width": 256,
+    "height": 352,
+    "src": "water_fall_W.png"
+  }
+]

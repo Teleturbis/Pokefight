@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { GiSchoolBag, GiTreasureMap, GiTwoCoins } from "react-icons/gi";
-import { FiMenu } from "react-icons/fi";
+import React, { useEffect, useRef, useState } from 'react';
+import { GiSchoolBag, GiTreasureMap, GiTwoCoins } from 'react-icons/gi';
+import { FiMenu } from 'react-icons/fi';
 
-import Chat from "./Chat";
-import Inventar from "../gamElements/Inventar";
+import Chat from './Chat';
+import Inventar from '../gamElements/Inventar';
+import Game from '../../Game';
 import ArenaFight from "./ArenaFight";
 
 const map = require("../../assets/unbenannt.png");
@@ -33,6 +34,24 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
   }
 
   console.log(socketID);
+
+  let game = useRef();
+  // let client = useRef();
+
+  useEffect(() => {
+    if (!game.current) {
+      game.current = new Game(
+        () => {},
+        () => {}
+      );
+    }
+    // client.current = new Client(
+    //   setIsConnected,
+    //   setElapsedTics,
+    //   game.current,
+    //   logAction
+    // );
+  }, []);
 
   return (
     <div className="main-game-div">
