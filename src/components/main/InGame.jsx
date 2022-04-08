@@ -13,6 +13,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
   const [mapVisible, setMapVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const [inArenaFight, setInArenaFight] = useState(false);
+  const [socketID, setSocketID] = useState();
 
   function handleDelete() {}
 
@@ -26,6 +27,12 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
   function changeSetInArena() {
     setInArenaFight(!inArenaFight);
   }
+
+  function changeSocketID(value) {
+    setSocketID(value);
+  }
+
+  console.log(socketID);
 
   return (
     <div className="main-game-div">
@@ -57,7 +64,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
             setMenuVisible(false);
           }}
         />
-        <Chat />
+        <Chat changeSocketID={changeSocketID} />
 
         {mapVisible ? (
           <div className="game-map-div">

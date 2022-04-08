@@ -1,19 +1,17 @@
-import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 
 import { io } from "socket.io-client";
 
-export default function Chat() {
+export default function Chat({ changeSocketID }) {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const socket = useRef();
-
-  const date = new Date();
 
   useEffect(() => {
     socket.current = io("https://express-db-pokefight.herokuapp.com");
 
     socket.current.on("connect", () => {
+      changeSocketID(socket.current.id);
       console.log("client connected", socket.current.id);
     });
 

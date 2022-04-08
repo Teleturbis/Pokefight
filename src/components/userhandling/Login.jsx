@@ -24,9 +24,10 @@ export default function Login({ changeUser }) {
       })
       .then((res) => {
         if (res.data.username) {
+          console.log("789", res.data._id);
           changeUser({
             username: res.data.username,
-            userID: res.data.id,
+            userID: res.data._id,
             loggedIn: true,
             token: res.data.token,
           });

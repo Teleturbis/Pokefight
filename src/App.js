@@ -15,6 +15,7 @@ function App() {
     userID: "",
     loggedIn: false,
     token: "",
+    socketID: "",
   });
 
   const [musicPlaying, setMusicPlaying] = useState(false);
@@ -22,13 +23,13 @@ function App() {
   function changeUser(value) {
     setUser({
       username: value.username,
-      userID: value.userid,
+      userID: value.userID,
       loggedIn: value.loggedIn,
       token: value.token,
     });
 
     localStorage.setItem("userName", value.username);
-    localStorage.setItem("userID", value.userid);
+    localStorage.setItem("userID", value.userID);
     localStorage.setItem("loggedIn", value.loggedIn);
     localStorage.setItem("token", value.token);
   }
@@ -44,18 +45,19 @@ function App() {
   }
 
   function audioMainTheme() {
-    console.log(123);
     audio.pause();
   }
 
   useEffect(() => {
     if (localStorage.getItem("userName")) {
       setUser({
-        username: localStorage.userName,
-        userID: localStorage.userID,
-        loggedIn: localStorage.loggedIn,
-        token: localStorage.token,
+        username: localStorage.getItem("userName"),
+        userID: localStorage.getItem("userID"),
+        loggedIn: localStorage.getItem("loggedIn"),
+        token: localStorage.getItem("token"),
       });
+
+      console.log("HERE");
     }
   }, []);
 
