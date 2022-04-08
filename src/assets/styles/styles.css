@@ -4,7 +4,7 @@
   --primary: #0a285f;
   --secondary: #0075be;
   --tertiary: #1348ab;
-  
+
   --transparent: #0075bece;
 
   --text: #ffcc00;
@@ -197,6 +197,12 @@ body {
 .inv-btn {
   font-size: 7rem;
   margin: 1rem;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.inv-btn:hover {
+  transform: scale(1.2);
 }
 
 .information-div {
@@ -219,6 +225,12 @@ body {
 
 .menu-btn {
   font-size: 2.5rem;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  transform: scale(1.2);
 }
 
 .money {
@@ -236,6 +248,151 @@ body {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
+  z-index: 11;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.map-btn:hover {
+  transform: scale(1.2);
+}
+
+.game-map-div {
+  background-color: rgba(0, 0, 0, 0.712);
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.game-map {
+  display: block;
+  height: 100%;
+  margin: auto;
+}
+
+.game-menu-div {
+  background-color: rgba(0, 0, 0, 0.75);
+
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 12;
+}
+
+.game-menu-content {
+  background-color: var(--primary);
+  width: 25%;
+  height: 40%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 0.25rem;
+
+  padding: 2rem;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.game-menu-content > h1 {
+  padding: 2rem;
+}
+
+.game-menu-content > h2 {
+  padding: 1rem;
+  padding-bottom: 4rem;
+}
+
+.game-menu-content > button {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid var(--text);
+  background-color: var(--tertiary);
+  color: var(--text);
+  font-size: 1.75rem;
+  font-family: "DotGothic16";
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  transition: 100ms;
+
+  width: 80%;
+}
+
+.game-menu-content > button:hover {
+  background-color: #0a285f;
+  letter-spacing: 0.5rem;
+}
+
+.game-menu-content > button:active {
+  letter-spacing: 0.3rem;
+}
+
+.arena-figth-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 15;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.938);
+}
+
+.choosePokemon {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.choosePokemon-card {
+  background-color: var(--secondary);
+  width: 15%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+
+  font-size: 1.25rem;
+  letter-spacing: 0.1rem;
+
+  cursor: pointer;
+
+  transition: 100ms;
+}
+
+.choosePokemon-card:hover {
+  transform: scale(1.025);
+}
+
+.choosePokemon-card > img {
+  width: 60%;
+  margin: 2rem 0;
+  background-color: var(--primary);
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.choosePokemon-card > h1 {
+  margin: 1rem 0;
+}
+
+.arenainFight-main {
+  width: 100%;
+  height: 100%;
+
+  background-color: tomato;
 }
 
 /******************************/
