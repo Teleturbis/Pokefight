@@ -5,9 +5,9 @@ import { FiMenu } from 'react-icons/fi';
 import Chat from './Chat';
 import Inventar from '../gamElements/Inventar';
 import Game from '../../Game';
-import ArenaFight from "./ArenaFight";
+import ArenaFight from './ArenaFight';
 
-const map = require("../../assets/unbenannt.png");
+const map = require('../../assets/unbenannt.png');
 
 export default function MainMenu({ user, changeUser, audioMainTheme }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
@@ -22,7 +22,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
 
   function handleLogout() {
     audioMainTheme();
-    changeUser({ username: "", token: "", loggedIn: false });
+    changeUser({ username: '', token: '', loggedIn: false });
   }
 
   function changeSetInArena() {
@@ -55,68 +55,70 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
 
   return (
     <div className="main-game-div">
-      <div className="game-div">{/* HERE GAMECOMPONENT */}</div>
-      <div className="game-overlay">
-        <GiSchoolBag
-          className="inv-btn"
-          onClick={() => {
-            setInventaryVisible(!inventaryVisible);
-            setMapVisible(false);
-            setMenuVisible(false);
-          }}
-        />
-        <div className="information-div">
-          <FiMenu
-            className="menu-btn"
-            onClick={() => setMenuVisible(!menuVisible)}
+      <div className="game-div">
+        {/* HERE GAMECOMPONENT */}
+        <div className="game-overlay">
+          <GiSchoolBag
+            className="inv-btn"
+            onClick={() => {
+              setInventaryVisible(!inventaryVisible);
+              setMapVisible(false);
+              setMenuVisible(false);
+            }}
           />
-          <p className="level">Level 99</p>
-          <p className="money">
-            <GiTwoCoins className="money-symbole" /> 999$
-          </p>
-        </div>
-        <GiTreasureMap
-          className="map-btn"
-          onClick={() => {
-            setMapVisible(!mapVisible);
-            setInventaryVisible(false);
-            setMenuVisible(false);
-          }}
-        />
-        <Chat changeSocketID={changeSocketID} />
-
-        {mapVisible ? (
-          <div className="game-map-div">
-            <img src={map} className="game-map" />
+          <div className="information-div">
+            <FiMenu
+              className="menu-btn"
+              onClick={() => setMenuVisible(!menuVisible)}
+            />
+            <p className="level">Level 99</p>
+            <p className="money">
+              <GiTwoCoins className="money-symbole" /> 999$
+            </p>
           </div>
-        ) : null}
+          <GiTreasureMap
+            className="map-btn"
+            onClick={() => {
+              setMapVisible(!mapVisible);
+              setInventaryVisible(false);
+              setMenuVisible(false);
+            }}
+          />
+          <Chat changeSocketID={changeSocketID} />
 
-        {inventaryVisible ? <Inventar /> : null}
-
-        {menuVisible ? (
-          <div
-            className="game-menu-div"
-            onClick={(e) =>
-              e.target.className === "game-menu-div"
-                ? setMenuVisible(false)
-                : null
-            }
-          >
-            <div className="game-menu-content">
-              <h1>Menu</h1>
-              <h2>Hey {user.username}!</h2>
-              <button onClick={() => handleLogout()}>Log Out</button>
-              <button onClick={() => handleDelete()}>Delete Account</button>
-              <button onClick={() => handleChangeName()}>
-                Change Username
-              </button>
+          {mapVisible ? (
+            <div className="game-map-div">
+              <img src={map} className="game-map" />
             </div>
-          </div>
-        ) : null}
+          ) : null}
 
-        {inArenaFight && (
-          <ArenaFight changeSetInArena={changeSetInArena} user={user} />
-        )}
+          {inventaryVisible ? <Inventar /> : null}
+
+          {menuVisible ? (
+            <div
+              className="game-menu-div"
+              onClick={(e) =>
+                e.target.className === 'game-menu-div'
+                  ? setMenuVisible(false)
+                  : null
+              }
+            >
+              <div className="game-menu-content">
+                <h1>Menu</h1>
+                <h2>Hey {user.username}!</h2>
+                <button onClick={() => handleLogout()}>Log Out</button>
+                <button onClick={() => handleDelete()}>Delete Account</button>
+                <button onClick={() => handleChangeName()}>
+                  Change Username
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+          {inArenaFight && (
+            <ArenaFight changeSetInArena={changeSetInArena} user={user} />
+          )}
+        </div>
       </div>
     </div>
   );
