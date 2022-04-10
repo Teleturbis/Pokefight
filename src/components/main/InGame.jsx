@@ -1,5 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { GiSchoolBag, GiTreasureMap, GiTwoCoins } from 'react-icons/gi';
+import {
+  GiSchoolBag,
+  GiTreasureMap,
+  GiTwoCoins,
+  GiPerson,
+} from 'react-icons/gi';
 import { FiMenu } from 'react-icons/fi';
 
 import Chat from './Chat';
@@ -66,15 +71,25 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               setMenuVisible(false);
             }}
           />
-          <div className="information-div">
-            <FiMenu
-              className="menu-btn"
-              onClick={() => setMenuVisible(!menuVisible)}
-            />
-            <p className="level">Level 99</p>
-            <p className="money">
-              <GiTwoCoins className="money-symbole" /> 999$
-            </p>
+          <div className="menu-div">
+            <div className="information-div">
+              <FiMenu
+                className="menu-btn"
+                onClick={() => setMenuVisible(!menuVisible)}
+              />
+              <p className="level">Friends</p>
+              <GiPerson className="money-symbole" />
+            </div>
+            <div className="friends-div">
+              <FiMenu
+                className="menu-btn"
+                onClick={() => setMenuVisible(!menuVisible)}
+              />
+              <p className="level">Level 99</p>
+              <p className="money">
+                <GiTwoCoins className="money-symbole" /> 999
+              </p>
+            </div>
           </div>
           <GiTreasureMap
             className="map-btn"
@@ -84,7 +99,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               setMenuVisible(false);
             }}
           />
-          <Chat changeSocketID={changeSocketID} />
+          <Chat user={user} changeSocketID={changeSocketID} />
 
           {mapVisible ? (
             <div className="game-map-div">

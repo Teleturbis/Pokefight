@@ -1,30 +1,31 @@
-import axios from "axios";
-import React, { useState } from "react";
+import axios from 'axios';
+import React, { useState } from 'react';
 
 export default function Login({ changeUser }) {
-  const [usernameInput, setusernameInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
+  const [usernameInput, setusernameInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
   const [loginMode, setloginMode] = useState(true);
 
-  function handleLogin() {
-    const type = usernameInput.includes("@") ? "email" : "username";
+  function handleLogin(e) {
+    e.preventDefault();
+    const type = usernameInput.includes('@') ? 'email' : 'username';
 
-    console.log("Logindata", {
+    console.log('Logindata', {
       user: usernameInput,
       type: type,
       password: passwordInput,
     });
 
     axios
-      .post("http://express-db-pokefight.herokuapp.com/user/login", {
+      .post('http://express-db-pokefight.herokuapp.com/user/login', {
         user: usernameInput,
         type: type,
         password: passwordInput,
       })
       .then((res) => {
         if (res.data.username) {
-          console.log("789", res.data._id);
+          console.log('789', res.data._id);
           changeUser({
             username: res.data.username,
             userID: res.data._id,
@@ -35,23 +36,23 @@ export default function Login({ changeUser }) {
       })
       .catch((err) => {
         if (err) {
-          window.alert("Falsches Passwort oder Benutzername");
+          window.alert('Falsches Passwort oder Benutzername');
         }
       });
 
-    setusernameInput("");
-    setPasswordInput("");
+    setusernameInput('');
+    setPasswordInput('');
   }
 
   function handleRegistration() {
     axios
-      .post("https://express-db-pokefight.herokuapp.com/user", {
+      .post('https://express-db-pokefight.herokuapp.com/user', {
         username: usernameInput,
         email: emailInput,
         password: passwordInput,
         validated: true,
       })
-      .then((res) => console.log("Registration", res))
+      .then((res) => console.log('Registration', res))
       .catch((err) => console.error(err));
   }
 
@@ -63,19 +64,19 @@ export default function Login({ changeUser }) {
           <div className="login-togglediv">
             <button
               onClick={() => setloginMode(true)}
-              className={`login-mode-button ${loginMode ? "loginmode" : ""}`}
+              className={`login-mode-button ${loginMode ? 'loginmode' : ''}`}
             >
               Login
             </button>
             <button
-              className={`login-mode-button ${loginMode ? "" : "loginmode"}`}
+              className={`login-mode-button ${loginMode ? '' : 'loginmode'}`}
               onClick={() => setloginMode(false)}
             >
               Sign Up
             </button>
           </div>
           {loginMode ? (
-            <div className="login-input">
+            <form onSubmit={(e) => handleLogin(e)} className="login-input">
               <input
                 className="login-element"
                 type="text"
@@ -90,13 +91,10 @@ export default function Login({ changeUser }) {
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
               />
-              <button
-                className="login-element login-button"
-                onClick={() => handleLogin()}
-              >
+              <button type="submit" className="login-element login-button">
                 Login
               </button>
-            </div>
+            </form>
           ) : (
             <div className="login-input">
               <input
