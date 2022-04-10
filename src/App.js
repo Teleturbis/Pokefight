@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import './assets/styles/styles.css';
+import "./assets/styles/styles.css";
 
-import Login from './components/userhandling/Login';
-import InGame from './components/main/InGame';
+import Login from "./components/userhandling/Login";
+import InGame from "./components/main/InGame";
 
 import mainTheme from "./assets/sounds/background/theme/theme.mp3";
 
@@ -11,8 +11,8 @@ function App() {
   const audio = new Audio(mainTheme);
 
   const [user, setUser] = useState({
-    username: '',
-    userID: '',
+    username: "",
+    userID: "",
     loggedIn: false,
     token: "",
     socketID: "",
@@ -25,7 +25,7 @@ function App() {
       username: value.username,
       userID: value.userID,
       loggedIn: value.loggedIn,
-      token: value.token
+      token: value.token,
     });
 
     localStorage.setItem("userName", value.username);
@@ -49,7 +49,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('userName')) {
+    if (localStorage.getItem("userName")) {
       setUser({
         username: localStorage.getItem("userName"),
         userID: localStorage.getItem("userID"),
