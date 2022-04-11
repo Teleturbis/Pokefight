@@ -178,7 +178,7 @@ body {
   overflow: hidden;
 }
 
-.game-div > canvas{
+.game-div > canvas {
   width: 100%;
   margin-top: -15%;
 }
@@ -189,7 +189,7 @@ body {
 
   position: absolute;
   top: 0;
-  left: .5%;
+  left: 0.5%;
 
   color: var(--text);
 }
@@ -214,10 +214,10 @@ body {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
-
 }
 
-.information-div, .friends-div {
+.information-div,
+.friends-div {
   background-color: var(--secondary);
   padding: 0.5rem 1rem;
   border: 2px solid var(--primary);
@@ -252,8 +252,8 @@ body {
 .map-btn {
   font-size: 7rem;
   position: absolute;
-  right: .5rem;
-  bottom: .5rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
   z-index: 11;
   cursor: pointer;
   transition: 100ms;
@@ -342,12 +342,13 @@ body {
 
 .arena-figth-div {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -0rem;
+  left: -1rem;
+  right: -1rem;
+  bottom: -1rem;
   z-index: 15;
 
-  width: 100%;
-  height: 100%;
+  padding: 2rem;
 
   background-color: rgba(0, 0, 0, 0.938);
 }
@@ -355,7 +356,9 @@ body {
 .choosePokemon {
   display: flex;
   flex-wrap: wrap;
-  min-height: 100%;
+  height: 100%;
+
+  overflow-y: auto;
 
   align-items: center;
   justify-content: center;
@@ -364,6 +367,7 @@ body {
 .choosePokemon-card {
   background-color: var(--secondary);
   width: 15%;
+  height: 50rem;
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -376,10 +380,13 @@ body {
   cursor: pointer;
 
   transition: 100ms;
+
+  opacity: 0.75;
 }
 
 .choosePokemon-card:hover {
   transform: scale(1.025);
+  opacity: 1;
 }
 
 .choosePokemon-card > img {
@@ -399,6 +406,111 @@ body {
   height: 100%;
 
   background-color: tomato;
+}
+
+.countOverlay {
+  background-color: black;
+  color: var(--text);
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+.fight-div {
+  background-image: url("../fightBG.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  height: 100%;
+
+  margin: auto;
+  padding: 10rem 0;
+}
+
+.enemy-div {
+  position: absolute;
+  bottom: 43%;
+  right: 5%;
+  left: 0;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-top: 9rem;
+}
+
+.enemy-div > img {
+  height: 25rem;
+}
+
+.enemy-div > div {
+  align-self: center;
+  background-color: var(--secondary);
+  padding: 2rem;
+  border: 2px solid var(--text);
+  width: 40rem;
+}
+
+.user-div {
+  position: absolute;
+  bottom: 4%;
+  left: 20%;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.user-div > img {
+  height: 25rem;
+  margin-right: 40rem;
+}
+
+.user-div > div {
+  background-color: var(--secondary);
+  padding: 1rem;
+  border: 2px solid var(--text);
+  width: 40rem;
+  height: 15rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.actions-div {
+  height: 5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.actions-div > button {
+  background-color: var(--tertiary);
+  border: 2px solid var(--text);
+  border-radius: 0.2rem;
+
+  width: 24rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+
+  color: var(--text);
+  font-family: "Press Start 2P";
+
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.actions-div > button:hover {
+  letter-spacing: 0.5rem;
+  background-color: var(--secondary);
 }
 
 /******************************/
