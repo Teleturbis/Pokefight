@@ -1,24 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import {
   GiSchoolBag,
   GiTreasureMap,
   GiTwoCoins,
   GiPerson,
-} from 'react-icons/gi';
-import { FiMenu } from 'react-icons/fi';
+} from "react-icons/gi";
+import { FiMenu } from "react-icons/fi";
 
-import Chat from './Chat';
-import Inventar from '../gamElements/Inventar';
-import Game from '../../Game';
-import ArenaFight from './ArenaFight';
+import Chat from "./Chat";
+import Inventar from "../gamElements/Inventar";
+import Game from "../../Game";
+import ArenaFight from "./ArenaFight";
 
-const map = require('../../assets/unbenannt.png');
+const map = require("../../assets/unbenannt.png");
 
 export default function MainMenu({ user, changeUser, audioMainTheme }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
   const [mapVisible, setMapVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
-  const [inArenaFight, setInArenaFight] = useState(false);
+  const [inArenaFight, setInArenaFight] = useState(true);
   const [socketID, setSocketID] = useState();
 
   function handleDelete() {}
@@ -27,7 +27,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
 
   function handleLogout() {
     audioMainTheme();
-    changeUser({ username: '', token: '', loggedIn: false });
+    changeUser({ username: "", token: "", loggedIn: false });
   }
 
   function changeSetInArena() {
@@ -113,7 +113,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
             <div
               className="game-menu-div"
               onClick={(e) =>
-                e.target.className === 'game-menu-div'
+                e.target.className === "game-menu-div"
                   ? setMenuVisible(false)
                   : null
               }
