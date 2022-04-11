@@ -14,11 +14,11 @@ import ArenaFight from "./ArenaFight";
 
 const map = require("../../assets/unbenannt.png");
 
-export default function MainMenu({ user, changeUser, audioMainTheme }) {
+export default function MainMenu({ user, changeUser }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
   const [mapVisible, setMapVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
-  const [inArenaFight, setInArenaFight] = useState(true);
+  const [inArenaFight, setInArenaFight] = useState(false);
   const [socketID, setSocketID] = useState();
 
   function handleDelete() {}
@@ -26,7 +26,6 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
   function handleChangeName() {}
 
   function handleLogout() {
-    audioMainTheme();
     changeUser({ username: "", token: "", loggedIn: false });
   }
 
@@ -38,30 +37,22 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
     setSocketID(value);
   }
 
-  console.log(socketID);
-
   let game = useRef();
-  // let client = useRef();
 
   useEffect(() => {
+    //Initialize Game
     if (!game.current) {
       game.current = new Game(
         () => {},
         () => {}
       );
     }
-    // client.current = new Client(
-    //   setIsConnected,
-    //   setElapsedTics,
-    //   game.current,
-    //   logAction
-    // );
   }, []);
 
   return (
     <div className="main-game-div">
       <div className="game-div">
-        {/* HERE GAMECOMPONENT */}
+        {/* HERE GAME COMPONENT */}
         <div className="game-overlay">
           <GiSchoolBag
             className="inv-btn"
@@ -71,6 +62,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               setMenuVisible(false);
             }}
           />
+
           <div className="menu-div">
             <div className="information-div">
               <FiMenu
@@ -91,6 +83,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               </p>
             </div>
           </div>
+
           <GiTreasureMap
             className="map-btn"
             onClick={() => {
@@ -99,7 +92,10 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               setMenuVisible(false);
             }}
           />
+
           <Chat user={user} changeSocketID={changeSocketID} />
+
+          {/* Conditional Rendering: */}
 
           {mapVisible ? (
             <div className="game-map-div">
@@ -107,7 +103,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
             </div>
           ) : null}
 
-          {inventaryVisible ? <Inventar /> : null}
+          {inventaryVisible ? <Inventar user={user} /> : null}
 
           {menuVisible ? (
             <div

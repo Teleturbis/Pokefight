@@ -199,10 +199,33 @@ body {
   margin: 1rem 0;
   transition: 100ms;
   cursor: pointer;
+  position: absolute;
+  z-index: 11;
 }
 
 .inv-btn:hover {
   transform: scale(1.2);
+}
+
+.inventar-div {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  position: absolute;
+  z-index: 10;
+  left: -1rem;
+  right: -1rem;
+  top: 0;
+  bottom: -1rem;
+}
+
+.inv-content-div {
+  width: 80%;
+  margin: auto;
+
+  height: 100%;
+  padding: 3rem;
+
+  background-color: var(--primary);
 }
 
 .menu-div {

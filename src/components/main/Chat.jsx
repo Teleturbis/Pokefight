@@ -8,9 +8,9 @@ export default function Chat({ user, changeSocketID }) {
   const socket = useRef();
 
   useEffect(() => {
-    // socket.current = io('https://express-db-pokefight.herokuapp.com', {
+    socket.current = io('https://express-db-pokefight.herokuapp.com', {
     // socket.current = io('http://localhost:3003', {
-    socket.current = io('http://tom-ryzen5:3003', {
+    // socket.current = io('http://tom-ryzen5:3003', {
       // auth: { userId: '624b76d47607ffd9e180f7e0' },
       auth: { userId: user.userID, username: user.username },
     });

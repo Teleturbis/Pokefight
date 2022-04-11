@@ -1,23 +1,25 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
-import { MdCatchingPokemon } from "react-icons/md";
-import { GiLightBackpack } from "react-icons/gi";
+export default function Inventar({ user }) {
+  const [userInv, setUserInv] = useState();
 
-export default function Inventar() {
+  //Get Characterinventary
+  useEffect(() => {
+    axios
+      .get(
+        `https://express-db-pokefight.herokuapp.com/character/${user.userID}`
+      )
+      .then((res) => setUserInv(res.data));
+  }, []);
+
+  console.log(userInv);
+  console.log("user", user);
+
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: "40rem",
-        top: "-10rem",
-        fontSize: "5800%",
-        zIndex: "10",
-      }}
-    >
-      <GiLightBackpack
-        style={{ backgroundColor: "chocolate", opacity: "0.9", height: "90%" }}
-      />
-      <div style={{}}></div>
+    <div className="inventar-div">
+      <div className="inv-content-div">Das ist das Inventar</div>
     </div>
   );
 }
+//624bdc13d64105dd9a2975b4

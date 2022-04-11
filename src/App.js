@@ -28,15 +28,15 @@ function App() {
       token: value.token,
     });
 
+    //Save User to LS
     localStorage.setItem("userName", value.username);
     localStorage.setItem("userID", value.userID);
     localStorage.setItem("loggedIn", value.loggedIn);
     localStorage.setItem("token", value.token);
   }
 
-  console.log(user);
-
   function playTheme() {
+    //Play Theme if Music isnt playing yet
     if (!musicPlaying) {
       audio.volume = 0.25;
       audio.play();
@@ -44,11 +44,8 @@ function App() {
     setMusicPlaying(true);
   }
 
-  function audioMainTheme() {
-    audio.pause();
-  }
-
   useEffect(() => {
+    //Log User in, if User was logged in at last session
     if (localStorage.getItem("userName")) {
       setUser({
         username: localStorage.getItem("userName"),
@@ -56,8 +53,6 @@ function App() {
         loggedIn: localStorage.getItem("loggedIn"),
         token: localStorage.getItem("token"),
       });
-
-      console.log("HERE");
     }
   }, []);
 
@@ -69,11 +64,7 @@ function App() {
       }}
     >
       {user.loggedIn ? (
-        <InGame
-          audioMainTheme={audioMainTheme}
-          user={user}
-          changeUser={changeUser}
-        />
+        <InGame user={user} changeUser={changeUser} />
       ) : (
         <Login changeUser={changeUser} />
       )}
