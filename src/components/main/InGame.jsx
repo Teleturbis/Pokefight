@@ -17,7 +17,7 @@ const map = require('../../assets/unbenannt.png');
 
 let client = null;
 
-export default function MainMenu({ user, changeUser, audioMainTheme }) {
+export default function MainMenu({ user, changeUser }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
   const [mapVisible, setMapVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
@@ -29,7 +29,6 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
   function handleChangeName() {}
 
   function handleLogout() {
-    audioMainTheme();
     changeUser({ username: '', token: '', loggedIn: false });
   }
 
@@ -38,9 +37,9 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
   }
 
   let game = useRef();
-  // let client = useRef();
 
   useEffect(() => {
+    //Initialize Game
     if (!game.current) {
       game.current = new Game(
         () => {},
@@ -68,7 +67,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
   return (
     <div className="main-game-div">
       <div className="game-div">
-        {/* HERE GAMECOMPONENT */}
+        {/* HERE GAME COMPONENT */}
         <div className="game-overlay">
           <GiSchoolBag
             className="inv-btn"
@@ -78,8 +77,10 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               setMenuVisible(false);
             }}
           />
+
           <div className="menu-div">
-            <div className="information-div">
+            <div>{user.username}</div>
+            <div className="friends-div">
               <FiMenu
                 className="menu-btn"
                 onClick={() => setMenuVisible(!menuVisible)}
@@ -87,7 +88,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               <p className="level">Friends</p>
               <GiPerson className="money-symbole" />
             </div>
-            <div className="friends-div">
+            <div className="information-div">
               <FiMenu
                 className="menu-btn"
                 onClick={() => setMenuVisible(!menuVisible)}
@@ -98,6 +99,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               </p>
             </div>
           </div>
+
           <GiTreasureMap
             className="map-btn"
             onClick={() => {
@@ -108,13 +110,15 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
           />
           {socketClient && <Chat user={user} client={socketClient} />}
 
+          {/* Conditional Rendering: */}
+
           {mapVisible ? (
             <div className="game-map-div">
               <img src={map} className="game-map" />
             </div>
           ) : null}
 
-          {inventaryVisible ? <Inventar /> : null}
+          {inventaryVisible ? <Inventar user={user} /> : null}
 
           {menuVisible ? (
             <div
@@ -142,6 +146,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
           )}
         </div>
       </div>
+      <div>Socket: {socketClient?.socket.id}</div>
     </div>
   );
 }
