@@ -1,5 +1,6 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import http from '../../api/http-common';
 
 export default function Inventar({ user }) {
   const [userInv, setUserInv] = useState(false);
@@ -10,6 +11,7 @@ export default function Inventar({ user }) {
 
   useEffect(() => {
     //Get Characterinventary
+    // http.get(`/character/?userid=${user.userID}`)
     axios
       .get(
         `https://express-db-pokefight.herokuapp.com/character/?userid=${user.userID}`
