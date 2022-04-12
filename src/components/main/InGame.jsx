@@ -47,9 +47,7 @@ export default function MainMenu({ user, changeUser }) {
       );
     }
 
-    const server = 'https://express-db-pokefight.herokuapp.com';
-    // const server = 'http://localhost:3003';
-    // const server = 'http://tom-ryzen5:3003';
+    const server = process.env.REACT_APP_SOCKET_SERVER;
 
     if (!client) {
       client = new PokeSocketClient(server, user);
