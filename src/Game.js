@@ -7,14 +7,10 @@ export default class Game {
   mobs = [];
   player = null;
 
-  constructor(setMovement = null, setKeys = null, changeLocation = null) {
-    this.setMovement = setMovement;
-    this.setKeys = setKeys;
-
-    console.log('== Setting up game ==');
-
+  constructor() {
     this.app = new PIXI.Application({ backgroundColor: 0x1099bb });
-    document.body.appendChild(this.app.view);
+
+    document.querySelector('.game-div').appendChild(this.app.view);
 
     // Scale mode for all textures, will retain pixelation
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
@@ -113,11 +109,8 @@ export default class Game {
     // Opt-in to interactivity
     player.interactive = true;
 
-    const MAX_SPEED = 2; // Maximum speed
-    const MIN_SPEED = 0.1; // Minimum speed before stopping
-    const MIN_WALK_SPEED = 0.3; // Minimum speed to play walk animation
-    const FRICTION = 0.8; // Player slows down by this coefficient when not accelerating
-    const ACCELERATION = 0.2; // Player accelerates by this coefficient when moving
+    const MIN_WALK_SPEED = 0.1;
+    const MOVE_SPEED = 1;
 
     // Movement
     let keys = {
@@ -127,29 +120,17 @@ export default class Game {
       down: false
     };
 
-    this.setKeys({ ...keys });
-
     let speed = 0;
-    let acceleration = 0;
     let angle = null;
     let face = 'right';
 
     this.app.ticker.add((delta) => {
-      // todo change speed if angle is different
+      speed = Object.values(keys).some((k) => k) ? 1 : 0;
       const currentAngle = this.angleFromKeys(keys);
-      if (currentAngle !== angle) speed /= 2;
       if (currentAngle !== null) angle = currentAngle;
-
-      acceleration = Object.values(keys).some((key) => key) ? ACCELERATION : 0;
-
-      speed += acceleration;
-      speed = Math.min(speed, MAX_SPEED);
 
       player.x += Math.cos((angle * Math.PI) / 180) * speed;
       player.y += Math.sin((angle * Math.PI) / 180) * speed;
-
-      if (!acceleration) speed *= FRICTION;
-      if (speed < MIN_SPEED) speed = 0;
 
       player.moving = speed > MIN_WALK_SPEED;
 
@@ -160,14 +141,6 @@ export default class Game {
       // Center world on player
       this.world.x = -player.x + this.app.screen.width / 2;
       this.world.y = -player.y + this.app.screen.height / 2;
-
-      this.setMovement({
-        x: Math.floor(player.x),
-        y: Math.floor(player.y),
-        moving: player.moving,
-        angle: angle,
-        face: face
-      });
     });
 
     // Movement listeners
@@ -188,9 +161,6 @@ export default class Game {
         default:
           break;
       }
-
-      // console.log(`Keydown: ${e.key}`);
-      this.setKeys({ ...keys });
     });
 
     document.addEventListener('keyup', (e) => {
@@ -210,9 +180,6 @@ export default class Game {
         default:
           break;
       }
-
-      // console.log(`Key up: ${e.key}`);
-      this.setKeys({ ...keys });
     });
   }
 
