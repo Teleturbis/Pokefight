@@ -1,15 +1,13 @@
 import * as PIXI from 'pixi.js';
-import { Sprite } from 'pixi.js';
 
-export class Mob extends Sprite {
+export class Mob {
   sprite;
 
-  constructor(app, id, x, y, skin) {
-    super();
-
+  constructor(app, world, id, x, y, skin) {
     // console.log(`Mob id:${id}, skin:${skin}, x:${x}, y:${y}`);
 
     this.app = app;
+    this.world = world;
     this.id = id;
 
     this.moving = false;
@@ -23,9 +21,15 @@ export class Mob extends Sprite {
     this.sprite.x = x;
     this.sprite.y = y;
 
+    this.world.addChild(this.sprite);
     this.setSkin(skin);
 
     this.app.ticker.add(this.onFrame.bind(this));
+  }
+
+  destroy() {
+    this.world.removeChild(this.sprite);
+    this.app.ticker.remove(this.onFrame.bind(this));
   }
 
   get x() {
@@ -56,9 +60,9 @@ export class Mob extends Sprite {
 
     const coords = { x: this.sprite.x, y: this.sprite.y };
 
-    this.removeChild(this.sprite);
+    this.world.removeChild(this.sprite);
     this.sprite = new PIXI.AnimatedSprite(this.sheet.stand);
-    this.addChild(this.sprite);
+    this.world.addChild(this.sprite);
 
     this.sprite.x = coords.x;
     this.sprite.y = coords.y;
@@ -100,3 +104,7 @@ export class Mob extends Sprite {
 }
 
 export class Player extends Mob {}
+
+export class Skin {
+  // constructor(path) {}
+}

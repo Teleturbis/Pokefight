@@ -52,6 +52,7 @@ export default class Client {
   generateTicObject() {
     let t = { actions: [] };
 
+    const mob = pickRandomMob(this.game.mobs.filter((m) => m.id !== -1));
     for (let i = 0; i < behavior.maxActionsPerTic; i++) {
       switch (weightedPick(behavior.actionsWeight).value) {
         case 'join':
@@ -59,10 +60,14 @@ export default class Client {
             t.actions.push(generateJoinAction());
           break;
         case 'leave':
-          // todo
+          if (mob) {
+            t.actions.push({
+              id: mob.id,
+              action: 'leave'
+            });
+          }
           break;
         case 'move':
-          const mob = pickRandomMob(this.game.mobs.filter((m) => m.id !== -1));
           if (mob) t.actions.push(generateMoveAction(mob));
           break;
         default:
@@ -96,7 +101,7 @@ export default class Client {
           );
           break;
         case 'leave':
-          // todo
+          this.game.removeMob(action.id);
           break;
         case 'move':
           this.game.moveMob(action.id, action.value.x, action.value.y);

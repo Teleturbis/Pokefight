@@ -3,7 +3,7 @@ import {
   GiSchoolBag,
   GiTreasureMap,
   GiTwoCoins,
-  GiPerson,
+  GiPerson
 } from 'react-icons/gi';
 import { FiMenu } from 'react-icons/fi';
 
@@ -12,6 +12,7 @@ import Inventar from '../gamElements/Inventar';
 import Game from '../../Game';
 import ArenaFight from './ArenaFight';
 import PokeSocketClient from '../../socket/socket';
+import Client from '../../Client';
 
 const map = require('../../assets/unbenannt.png');
 
@@ -37,13 +38,17 @@ export default function MainMenu({ user, changeUser }) {
   }
 
   let game = useRef();
+  let client = useRef();
 
   useEffect(() => {
     //Initialize Game
     if (!game.current) {
-      game.current = new Game(
-        () => {},
-        () => {}
+      game.current = new Game();
+      client.current = new Client(
+        game.current,
+        (b) => console.log('Client connected:', b),
+        (t) => console.log('Elapsed tics:', t),
+        (a) => console.log('Action:', a)
       );
     }
 
