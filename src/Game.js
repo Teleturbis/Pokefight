@@ -7,7 +7,10 @@ export default class Game {
   mobs = [];
   player = null;
 
-  constructor() {
+  constructor(client, user) {
+    this.client = client;
+    this.user = user;
+
     this.app = new PIXI.Application({ backgroundColor: 0x1099bb });
 
     document.querySelector('.game-div').appendChild(this.app.view);
@@ -51,6 +54,65 @@ export default class Game {
     this.player = new Player(this.app, this.world, -1, 0, 0, 'blue');
     this.mobs.push(this.player);
     this.handlePlayerMovement(this.player);
+
+    /**
+     * MULTIPLAYER
+     */
+
+    // Listen to incoming actions
+    this.client.addListener('game', 'action-received', (actions) => {
+      console.log('actions-received', `(${actions.length})`, actions);
+      actions.forEach((action) => {
+        console.log(
+          'action',
+          `${action.action} ${action.id === this.user.userID ? '*' : ''}`
+        );
+
+        if (action.id !== this.user.userID) {
+          switch (action.action) {
+            case 'join':
+              this.addMob(
+                action.id,
+                action.value.skin,
+                action.value.name,
+                action.value.x,
+                action.value.y
+              );
+              break;
+            case 'leave':
+              this.removeMob(action.id);
+              break;
+            case 'move':
+              this.moveMob(action.id, action.value.x, action.value.y);
+              break;
+            case 'verify':
+              // After joining, verify (initialize) all other users
+              break;
+            case 'skin':
+              // todo
+              break;
+            case 'name':
+              // todo
+              break;
+            default:
+              console.error('Unknown action:', action);
+          }
+        }
+      });
+    });
+
+    // Tell the server that the player has joined
+    console.log('my user id', this.user.userID);
+    const joinAction = {
+      action: 'join',
+      id: this.user.userID,
+      value: {
+        x: this.player.x,
+        y: this.player.y,
+        skin: this.skin
+      }
+    };
+    this.client.socket.emit('action-event', joinAction);
   }
 
   addMob(id, skin, name, x, y) {
@@ -64,6 +126,9 @@ export default class Game {
     const mob = this.mobs.find((mob) => mob.id === id);
     if (!mob) {
       console.error(`Could not find mob with id: ${id}`);
+      return;
+    } else if (mob.id === this.user.userID) {
+      // Ignore the player when moving a mob
       return;
     }
 
@@ -80,7 +145,7 @@ export default class Game {
 
   removeMob(id) {
     const i = this.mobs.findIndex((mob) => mob.id === id);
-    if (i !== -1) {
+    if (i !== this.user.userID) {
       this.mobs[i].destroy();
       this.mobs.splice(i, 1);
     } else {
@@ -109,9 +174,6 @@ export default class Game {
     // Opt-in to interactivity
     player.interactive = true;
 
-    const MIN_WALK_SPEED = 0.1;
-    const MOVE_SPEED = 1;
-
     // Movement
     let keys = {
       left: false,
@@ -124,15 +186,27 @@ export default class Game {
     let angle = null;
     let face = 'right';
 
+    setInterval(() => {
+      const moveAction = {
+        action: 'move',
+        id: this.user.userID,
+        value: {
+          x: this.player.x,
+          y: this.player.y
+        }
+      };
+      this.client.socket.emit('action-event', moveAction);
+    }, 200);
+
     this.app.ticker.add((delta) => {
       speed = Object.values(keys).some((k) => k) ? 1 : 0;
+      player.moving = speed > 0;
+
       const currentAngle = this.angleFromKeys(keys);
       if (currentAngle !== null) angle = currentAngle;
 
       player.x += Math.cos((angle * Math.PI) / 180) * speed;
       player.y += Math.sin((angle * Math.PI) / 180) * speed;
-
-      player.moving = speed > MIN_WALK_SPEED;
 
       if (angle !== 90 && angle !== 270)
         face = angle > 90 && angle < 270 ? 'left' : 'right';

@@ -79,13 +79,16 @@ export default class Client {
   }
 
   onInterval() {
-    this.applyTicObject(this.generateTicObject());
+    // this.applyTicObject(this.generateTicObject());
+    // Emit game changes
+    // const x = this.game.player.x;
+    // const y = this.game.player.y;
   }
 
-  applyTicObject(u) {
-    this.applyActions(u.actions);
-    this.setElapsedTics((prev) => prev + 1);
-  }
+  // applyTicObject(u) {
+  //   this.applyActions(u.actions);
+  //   this.setElapsedTics((prev) => prev + 1);
+  // }
 
   applyActions(actions) {
     actions.forEach((action) => {

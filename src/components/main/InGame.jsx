@@ -1,22 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  GiSchoolBag,
-  GiTreasureMap,
-  GiTwoCoins,
-  GiPerson
-} from 'react-icons/gi';
 import { FiMenu } from 'react-icons/fi';
-
-import Chat from './Chat';
-import Inventar from '../gamElements/Inventar';
+import {
+  GiPerson, GiSchoolBag,
+  GiTreasureMap,
+  GiTwoCoins
+} from 'react-icons/gi';
 import Game from '../../Game';
-import ArenaFight from './ArenaFight';
 import PokeSocketClient from '../../socket/socket';
-import Client from '../../Client';
+import Inventar from '../gamElements/Inventar';
+import ArenaFight from './ArenaFight';
+import Chat from './Chat';
+
 
 const map = require('../../assets/unbenannt.png');
-
-let client = null;
 
 export default function MainMenu({ user, changeUser }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
@@ -42,24 +38,15 @@ export default function MainMenu({ user, changeUser }) {
 
   useEffect(() => {
     //Initialize Game
-    if (!game.current) {
-      game.current = new Game();
-      client.current = new Client(
-        game.current,
-        (b) => console.log('Client connected:', b),
-        (t) => console.log('Elapsed tics:', t),
-        (a) => console.log('Action:', a)
-      );
-    }
-
-    const server = process.env.REACT_APP_SOCKET_SERVER;
-
-    if (!client) {
+    if (!game.current && !client.current) {
+      const server = process.env.REACT_APP_SOCKET_SERVER;
       client = new PokeSocketClient(server, user);
       client.socket.on('connect', () => {
         console.log('client connected', client.socket.id);
       });
       setSocketClient(client);
+
+      game.current = new Game(client, user);
     }
 
     return () => {

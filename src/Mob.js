@@ -12,6 +12,8 @@ export class Mob {
 
     this.moving = false;
 
+    skin = 'blue';
+    console.log('Mob.constructor', skin);
     this.sheet = this.packSpriteSheet(
       new PIXI.BaseTexture.from(this.app.loader.resources[skin].url)
     );
