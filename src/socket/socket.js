@@ -20,6 +20,8 @@ export default class PokeSocketClient {
       'friend-request-received',
       'friend-accept-received',
       'friend-reject-received',
+      'connect-received',
+      'action-gamestate-received',
     ];
 
     this.socketEvents.forEach((event) => {
@@ -39,6 +41,7 @@ export default class PokeSocketClient {
 
   addListener(type, event, callback) {
     if (!this.listener.find((l) => l.type === type && l.event === event)) {
+      console.log('addListener', type, event);
       this.listener.push({ type: type, event: event, callback: callback });
     }
   }
