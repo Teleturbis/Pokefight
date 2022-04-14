@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 let once = true;
-const type = 'chat';
 
 export default function Chat({ user, client }) {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
   // const socket = useRef();
 
+  const type = 'chat';
   useEffect(() => {
     console.log('useEffect Chat', client);
 
@@ -112,6 +112,20 @@ export default function Chat({ user, client }) {
       client.addListener(type, 'friend-reject-received', (fromUser) => {
         console.log('friend-reject-received', fromUser);
       });
+
+      // // a new player sends this socket-event to you
+      // client.addListener('game', 'connect-received', (fromUser) => {
+      //   console.log('new player has joined', fromUser);
+
+      //   // send this player your gamestate
+      //   const gamestate = null; // todo
+      //   client.socket.emit('action-gamestate-event', gamestate, fromUser);
+      // });
+
+      // // a player sends his gamestate to you
+      // client.addListener('game', 'action-gamestate-received', (fromUser) => {
+      //   console.log('action-gamestate-received', fromUser);
+      // });
     }
 
     return () => {
