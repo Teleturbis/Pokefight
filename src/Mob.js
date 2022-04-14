@@ -12,6 +12,7 @@ export class Mob {
 
     this.moving = false;
 
+    // if (!skin)
     skin = 'blue';
     console.log('Mob.constructor', skin);
     this.sheet = this.packSpriteSheet(
@@ -19,6 +20,14 @@ export class Mob {
     );
 
     this.sprite = new PIXI.AnimatedSprite(this.sheet.stand);
+
+    const displayText =
+      id.toString().length > 3 ? id.toString().substr(0, 3) : id.toString();
+    this.text = new PIXI.Text(displayText, {
+      fontSize: '12px',
+      fill: id === -1 ? '#000000' : '#ffffff'
+    });
+    this.world.addChild(this.text);
 
     this.sprite.x = x;
     this.sprite.y = y;
@@ -40,6 +49,7 @@ export class Mob {
 
   set x(value) {
     this.sprite.x = value;
+    this.text.x = value - this.text.width / 2;
   }
 
   get y() {
@@ -48,6 +58,7 @@ export class Mob {
 
   set y(value) {
     this.sprite.y = value;
+    this.text.y = value - 10;
   }
 
   face(value) {

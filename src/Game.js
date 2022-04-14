@@ -7,13 +7,20 @@ export default class Game {
   mobs = [];
   player = null;
 
-  constructor(client, user) {
+  constructor(client, user, setInfo) {
     this.client = client;
     this.user = user;
+    this.setInfo = setInfo;
 
-    this.app = new PIXI.Application({ backgroundColor: 0x1099bb });
+    this.app = new PIXI.Application({
+      backgroundColor: 0x1099bb,
+      antialias: true
+    });
 
     document.querySelector('.game-div').appendChild(this.app.view);
+
+    // const parent = this.app.view.parentNode;
+    this.app.renderer.resize(1280, 720);
 
     // Scale mode for all textures, will retain pixelation
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
@@ -51,7 +58,15 @@ export default class Game {
 
   start() {
     // Create the player
-    this.player = new Player(this.app, this.world, -1, 0, 0, 'blue');
+    const availableSkins = ['blue', 'green', 'orange', 'purple', 'red'];
+    this.player = new Player(
+      this.app,
+      this.world,
+      -1,
+      0,
+      0,
+      availableSkins[Math.floor(Math.random() * availableSkins.length)]
+    );
     this.mobs.push(this.player);
     this.handlePlayerMovement(this.player);
 
@@ -69,6 +84,7 @@ export default class Game {
         );
 
         if (action.id !== this.user.userID) {
+          console.log(action.id);
           switch (action.action) {
             case 'join':
               this.addMob(
@@ -86,7 +102,18 @@ export default class Game {
               this.moveMob(action.id, action.value.x, action.value.y);
               break;
             case 'verify':
-              // After joining, verify (initialize) all other users
+              // After another player joins, send a verify action to confirm you're there
+              // Same as join, just ignored by recipients if already verified
+              const mob = this.mobs.find((mob) => mob.id === action.id);
+              if (!mob) {
+                this.addMob(
+                  action.id,
+                  action.value.skin,
+                  action.value.name,
+                  action.value.x,
+                  action.value.y
+                );
+              }
               break;
             case 'skin':
               // todo
@@ -99,6 +126,11 @@ export default class Game {
           }
         }
       });
+
+      this.setInfo(
+        'Players',
+        this.mobs.map((mob) => mob.id)
+      );
     });
 
     // Tell the server that the player has joined
@@ -113,6 +145,7 @@ export default class Game {
       }
     };
     this.client.socket.emit('action-event', joinAction);
+    this.client.socket.emit('msg-event', `${this.user.username} has joined`);
   }
 
   addMob(id, skin, name, x, y) {
@@ -187,6 +220,14 @@ export default class Game {
     let face = 'right';
 
     setInterval(() => {
+      if (
+        this.lastCoord &&
+        this.player.x === this.lastCoord.x &&
+        this.player.y === this.lastCoord.y
+      ) {
+        return;
+      }
+
       const moveAction = {
         action: 'move',
         id: this.user.userID,
@@ -195,12 +236,14 @@ export default class Game {
           y: this.player.y
         }
       };
+
       this.client.socket.emit('action-event', moveAction);
+      this.lastCoord = { x: this.player.x, y: this.player.y };
     }, 200);
 
     this.app.ticker.add((delta) => {
       speed = Object.values(keys).some((k) => k) ? 1 : 0;
-      player.moving = speed > 0;
+      player.moving = speed > 0.1;
 
       const currentAngle = this.angleFromKeys(keys);
       if (currentAngle !== null) angle = currentAngle;

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import {
-  GiPerson, GiSchoolBag,
+  GiPerson,
+  GiSchoolBag,
   GiTreasureMap,
   GiTwoCoins
 } from 'react-icons/gi';
@@ -11,7 +12,6 @@ import Inventar from '../gamElements/Inventar';
 import ArenaFight from './ArenaFight';
 import Chat from './Chat';
 
-
 const map = require('../../assets/unbenannt.png');
 
 export default function MainMenu({ user, changeUser }) {
@@ -20,6 +20,7 @@ export default function MainMenu({ user, changeUser }) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [inArenaFight, setInArenaFight] = useState(false);
   const [socketClient, setSocketClient] = useState(null);
+  const [info, setInfo] = useState('');
 
   function handleDelete() {}
 
@@ -46,7 +47,7 @@ export default function MainMenu({ user, changeUser }) {
       });
       setSocketClient(client);
 
-      game.current = new Game(client, user);
+      game.current = new Game(client, user, setInfo);
     }
 
     return () => {
@@ -137,6 +138,12 @@ export default function MainMenu({ user, changeUser }) {
         </div>
       </div>
       <div>Socket: {socketClient?.socket.id}</div>
+      <div>
+        <pre>{info}</pre>
+      </div>
+      <div>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+      </div>
     </div>
   );
 }
