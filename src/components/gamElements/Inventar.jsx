@@ -17,7 +17,10 @@ export default function Inventar({ user }) {
         `https://express-db-pokefight.herokuapp.com/character/?userid=${user.userID}`
         // `https://express-db-pokefight.herokuapp.com/character/624f423e28a61a1a37af9928`
       )
-      .then((res) => setUserInv(res.data[0]));
+      .then((res) => {
+        console.log(res.data);
+        setUserInv(res.data[0]);
+      });
 
     //Get all Items
     axios
@@ -26,17 +29,21 @@ export default function Inventar({ user }) {
   }, []);
 
   useEffect(() => {
+    // If the inventory is loaded, fetch all of the inventory items
     if (userInv) {
-      const fetch = async () => {
-        await userInv.pokemons.map(async (pokemon) => {
-          let fetching = axios.get(
-            `https://express-db-pokefight.herokuapp.com/pokemon/${pokemon.pokemonid}`
-          );
-          temp.push(await fetching);
-          setUserPokemon(temp);
-        });
-      };
-      fetch();
+      let arr = [];
+      userInv.pokemons.forEach((pokemon) => {
+        //Get Pokemon
+        const url = `https://express-db-pokefight.herokuapp.com/pokemon/${pokemon.pokemonid}`;
+        axios.get(url).then((res) => {
+          console.log('downloaded', url);
+          arr.push(res);
+          if (arr.length === userInv.pokemons.length) {
+            // All downloads complete
+            setUserPokemon(arr);
+          }
+        })
+      });
     }
   }, [userInv]);
 
@@ -45,8 +52,8 @@ export default function Inventar({ user }) {
       (el) => el.pokemonid === pokemon.data._id
     ).stats.hp = 5;
 
-    console.log(userInv);
 
+    // HEAL POKEMON STARTS HERE
     // axios.put(
     //   `https://express-db-pokefight.herokuapp.com/character/?userid=${user.userID}`,
     //   {}
