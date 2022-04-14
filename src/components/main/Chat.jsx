@@ -1,92 +1,199 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-import { io } from 'socket.io-client';
+let once = true;
 
-export default function Chat({ user, changeSocketID }) {
+export default function Chat({ user, client }) {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
-  const socket = useRef();
+  // const socket = useRef();
 
+  const type = 'chat';
   useEffect(() => {
-    socket.current = io('https://express-db-pokefight.herokuapp.com', {
-    // socket.current = io('http://localhost:3003', {
-    // socket.current = io('http://tom-ryzen5:3003', {
-      // auth: { userId: '624b76d47607ffd9e180f7e0' },
-      auth: { userId: user.userID, username: user.username },
-    });
+    console.log('useEffect Chat', client);
 
-    socket.current.on('connect', () => {
-      changeSocketID(socket.current.id);
-      console.log('client connected', socket.current.id);
-    });
+    // ! hupft zweimal rein, warum??
+    if (client) {
+      console.log('once Chat');
+      once = false;
 
-    socket.current.on('msg-received', (message) => {
-      message.type = 'msg';
-      setMessages((prev) => {
-        // messages limit to 100
-        if (prev.length >= 100) prev.length = 99;
-        return [message, ...prev];
-      });
-    });
-
-    socket.current.on('friend-request-received', (fromUser) => {
-      console.log('friend-request-received', fromUser);
-
-      // ! "messages" useState has no value, cause we are in the only once called useEffect
-      // ! but weirdly "setMessages" with "prev" works!
-
-      setMessages((prev) => {
-        const frMsg = prev.find(
-          (msg) =>
-            msg.type === 'friend-request' && msg.fromUser.id === fromUser.id
-        );
-
-        if (!frMsg) {
+      client.addListener(type, 'msg-received', (message) => {
+        message.type = 'msg';
+        setMessages((prev) => {
           // messages limit to 100
           if (prev.length >= 100) prev.length = 99;
+          return [message, ...prev];
+        });
+      });
+
+      client.addListener(type, 'battle-request-received', (fromUser) => {
+        console.log('battle-request-received', fromUser);
+
+        // ! "messages" useState has no value, cause we are in the only once called useEffect
+        // ! but weirdly "setMessages" with "prev" works!
+
+        setMessages((prev) => {
+          const frMsg = prev.find(
+            (msg) =>
+              msg.type === 'battle-request' && msg.fromUser.id === fromUser.id
+          );
+
+          if (!frMsg) {
+            // messages limit to 100
+            if (prev.length >= 100) prev.length = 99;
+            return [
+              {
+                type: 'battle-request',
+                fromUser: fromUser,
+                msg: `Battle Request from ${fromUser.name}!`,
+                user: fromUser,
+              },
+              ...prev,
+            ];
+          } else {
+            return prev;
+          }
+        });
+      });
+
+      client.addListener(type, 'battle-accept-received', (fromUser) => {
+        console.log('battle-accept-received', fromUser);
+        setMessages((prev) => {
+          return [{ msg: `"${fromUser.name}" accepted the battle!` }, ...prev];
+        });
+      });
+
+      client.addListener(type, 'battle-reject-received', (fromUser) => {
+        console.log('battle-reject-received', fromUser);
+        setMessages((prev) => {
+          return [{ msg: `"${fromUser.name}" rejected the battle!` }, ...prev];
+        });
+      });
+
+      client.addListener(type, 'friend-request-received', (fromUser) => {
+        console.log('friend-request-received', fromUser);
+
+        // ! "messages" useState has no value, cause we are in the only once called useEffect
+        // ! but weirdly "setMessages" with "prev" works!
+
+        setMessages((prev) => {
+          const frMsg = prev.find(
+            (msg) =>
+              msg.type === 'friend-request' && msg.fromUser.id === fromUser.id
+          );
+
+          if (!frMsg) {
+            // messages limit to 100
+            if (prev.length >= 100) prev.length = 99;
+            return [
+              {
+                type: 'friend-request',
+                fromUser: fromUser,
+                msg: `Friend Request from ${fromUser.name}!`,
+                user: fromUser,
+              },
+              ...prev,
+            ];
+          } else {
+            return prev;
+          }
+        });
+      });
+
+      client.addListener(type, 'friend-accept-received', (fromUser) => {
+        console.log('friend-accept-received', fromUser);
+        setMessages((prev) => {
           return [
-            {
-              type: 'friend-request',
-              fromUser: fromUser,
-              msg: `Friend Request from ${fromUser.name}!`,
-              user: fromUser,
-            },
+            { msg: `"${fromUser.name}" accepted you as friend!` },
             ...prev,
           ];
-        } else {
-          return prev;
-        }
+        });
       });
-    });
 
-    socket.current.on('friend-accept-received', (fromUser) => {
-      console.log('friend-accept-received', fromUser);
-      setMessages((prev) => {
-        return [
-          { msg: `Friend request from "${fromUser.name}" accepted!` },
-          ...prev,
-        ];
+      client.addListener(type, 'friend-reject-received', (fromUser) => {
+        console.log('friend-reject-received', fromUser);
       });
-    });
 
-    socket.current.on('friend-reject-received', (fromUser) => {
-      console.log('friend-accept-received', fromUser);
-    });
+      // // a new player sends this socket-event to you
+      // client.addListener('game', 'connect-received', (fromUser) => {
+      //   console.log('new player has joined', fromUser);
+
+      //   // send this player your gamestate
+      //   const gamestate = null; // todo
+      //   client.socket.emit('action-gamestate-event', gamestate, fromUser);
+      // });
+
+      // // a player sends his gamestate to you
+      // client.addListener('game', 'action-gamestate-received', (fromUser) => {
+      //   console.log('action-gamestate-received', fromUser);
+      // });
+    }
 
     return () => {
-      socket.current.disconnect();
+      console.log('unmount Chat');
+      client.removeListeners(type);
     };
   }, []);
 
   function handleSendMsg(e) {
     e.preventDefault();
-    socket.current.emit('msg-event', userInput);
-    setUserInput('');
+    if (userInput.trim().length > 0) {
+      client.socket.emit('msg-event', userInput);
+      setUserInput('');
+    }
+  }
+
+  function handleSendBattleRequest(toUser) {
+    console.log('send battle request', toUser);
+    client.socket.emit(
+      'battle-request-event',
+      { name: user.username, id: user.userID },
+      toUser
+    );
+  }
+
+  function handleAcceptBattleRequest(requestUser) {
+    acceptRejectBattleRequest(requestUser, true, 'battle-accept-event');
+  }
+
+  function handleRejectBattleRequest(requestUser) {
+    acceptRejectBattleRequest(requestUser, false, 'battle-reject-event');
+  }
+
+  function acceptRejectBattleRequest(requestUser, accepted, socketEvent) {
+    console.log(socketEvent, requestUser);
+    client.socket.emit(
+      socketEvent,
+      { name: user.username, id: user.userID },
+      requestUser
+    );
+
+    setMessages((prev) =>
+      prev.filter(
+        (msg) =>
+          !(msg.type === 'battle-request' && msg.fromUser.id === requestUser.id)
+      )
+    );
+
+    // setMessages((prev) =>
+    //   prev.map((msg) => {
+    //     if (
+    //       msg.type === 'battle-request' &&
+    //       msg.fromUser.id === requestUser.id
+    //     ) {
+    //       msg.type = 'battle-request-result';
+    //       msg.msg = accepted
+    //         ? `Battle vs. "${requestUser.name}" accepted!`
+    //         : `Battle vs. "${requestUser.name}" rejected!`;
+    //     }
+
+    //     return msg;
+    //   })
+    // );
   }
 
   function handleSendFriendRequest(toUser) {
     console.log('send friend request', toUser);
-    socket.current.emit(
+    client.socket.emit(
       'friend-request-event',
       { name: user.username, id: user.userID },
       toUser
@@ -103,7 +210,7 @@ export default function Chat({ user, changeSocketID }) {
 
   function acceptRejectFriendRequest(requestUser, accepted, socketEvent) {
     console.log(socketEvent, requestUser);
-    socket.current.emit(
+    client.socket.emit(
       socketEvent,
       { name: user.username, id: user.userID },
       requestUser
@@ -126,45 +233,86 @@ export default function Chat({ user, changeSocketID }) {
     );
   }
 
+  function getPrefixFriendRequest(message) {
+    return (
+      <>
+        <button
+          onClick={() => handleAcceptFriendRequest(message?.user)}
+          title="Accept Friend Request"
+        >
+          ✅
+        </button>
+        <button
+          onClick={() => handleRejectFriendRequest(message?.user)}
+          title="Reject Friend Request"
+        >
+          ⛔️
+        </button>
+      </>
+    );
+  }
+
+  function getPrefixBattleRequest(message) {
+    return (
+      <>
+        <button
+          onClick={() => handleAcceptBattleRequest(message?.user)}
+          title="Accept Battle Request"
+        >
+          ✅
+        </button>
+        <button
+          onClick={() => handleRejectBattleRequest(message?.user)}
+          title="Reject Battle Request"
+        >
+          ⛔️
+        </button>
+      </>
+    );
+  }
+
+  function getPrefixMessage(message) {
+    return (
+      <>
+        {message?.type === 'msg' && (
+          <>
+            {message?.user && message?.user?.id !== user.userID && (
+              <>
+                <button
+                  onClick={() => handleSendFriendRequest(message?.user)}
+                  title="Send Friend Request"
+                >
+                  ➕
+                </button>
+                <button
+                  onClick={() => handleSendBattleRequest(message?.user)}
+                  title="Send Battle Request"
+                >
+                  ⚔️
+                </button>
+              </>
+            )}
+            <p className="chat-message-user">[{message?.user?.name}]</p>
+          </>
+        )}
+      </>
+    );
+  }
+
   return (
     <div className="chat-main-div">
       <div className="chat-messages-div">
         {messages.map((message, index) => (
           <div className="chat-message" key={index}>
-            {message?.type === 'friend-request' ? (
-              <>
-                <button
-                  onClick={() => handleAcceptFriendRequest(message?.user)}
-                  title="Accept Friend Request"
-                >
-                  ✅
-                </button>
-                <button
-                  onClick={() => handleRejectFriendRequest(message?.user)}
-                  title="Reject Friend Request"
-                >
-                  ⛔️
-                </button>
-              </>
-            ) : (
-              <>
-                {message?.type === 'msg' && (
-                  <>
-                    {message?.user && message?.user?.id !== user.userID && (
-                      <button
-                        onClick={() => handleSendFriendRequest(message?.user)}
-                        title="Send Friend Request"
-                      >
-                        ➕
-                      </button>
-                    )}
-                    <p className="chat-message-user">[{message?.user?.name}]</p>
-                  </>
-                )}
-              </>
-            )}
+            {message?.type === 'friend-request'
+              ? getPrefixFriendRequest(message)
+              : message?.type === 'battle-request'
+              ? getPrefixBattleRequest(message)
+              : getPrefixMessage(message)}
 
-            <p className="chat-message-content">{message?.msg}</p>
+            {message?.msg && (
+              <p className="chat-message-content">{message?.msg}</p>
+            )}
           </div>
         ))}
       </div>
