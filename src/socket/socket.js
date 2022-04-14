@@ -21,7 +21,7 @@ export default class PokeSocketClient {
       'friend-accept-received',
       'friend-reject-received',
       'connect-received',
-      'action-gamestate-received',
+      'action-gamestate-received'
     ];
 
     this.socketEvents.forEach((event) => {
