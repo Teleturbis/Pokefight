@@ -98,6 +98,11 @@ export default function ArenaInFight({
       window.alert("You lost the Fight!!!");
       changeSetInArena();
     }
+
+    http.put(``, {
+      
+    })
+
   }, [enemyHP, userHP]);
 
   function userAttack(attack) {
