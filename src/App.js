@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import './assets/styles/styles.css';
+import "./assets/styles/styles.css";
 
-import Login from './components/userhandling/Login';
-import InGame from './components/main/InGame';
+import Login from "./components/userhandling/Login";
+import InGame from "./components/main/InGame";
 
 import mainTheme from "./assets/sounds/background/theme/theme.mp3";
 
@@ -11,8 +11,8 @@ function App() {
   const audio = new Audio(mainTheme);
 
   const [user, setUser] = useState({
-    username: '',
-    userID: '',
+    username: "",
+    userID: "",
     loggedIn: false,
     token: "",
     socketID: "",
@@ -25,18 +25,18 @@ function App() {
       username: value.username,
       userID: value.userID,
       loggedIn: value.loggedIn,
-      token: value.token
+      token: value.token,
     });
 
+    //Save User to LS
     localStorage.setItem("userName", value.username);
     localStorage.setItem("userID", value.userID);
     localStorage.setItem("loggedIn", value.loggedIn);
     localStorage.setItem("token", value.token);
   }
 
-  console.log(user);
-
   function playTheme() {
+    //Play Theme if Music isnt playing yet
     if (!musicPlaying) {
       audio.volume = 0.25;
       audio.play();
@@ -44,20 +44,15 @@ function App() {
     setMusicPlaying(true);
   }
 
-  function audioMainTheme() {
-    audio.pause();
-  }
-
   useEffect(() => {
-    if (localStorage.getItem('userName')) {
+    //Log User in, if User was logged in at last session
+    if (localStorage.getItem("userName")) {
       setUser({
         username: localStorage.getItem("userName"),
         userID: localStorage.getItem("userID"),
         loggedIn: localStorage.getItem("loggedIn"),
         token: localStorage.getItem("token"),
       });
-
-      console.log("HERE");
     }
   }, []);
 
@@ -69,11 +64,7 @@ function App() {
       }}
     >
       {user.loggedIn ? (
-        <InGame
-          audioMainTheme={audioMainTheme}
-          user={user}
-          changeUser={changeUser}
-        />
+        <InGame user={user} changeUser={changeUser} />
       ) : (
         <Login changeUser={changeUser} />
       )}

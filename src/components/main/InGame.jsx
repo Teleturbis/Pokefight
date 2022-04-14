@@ -1,67 +1,71 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 import {
   GiSchoolBag,
   GiTreasureMap,
   GiTwoCoins,
   GiPerson,
-} from "react-icons/gi";
-import { FiMenu } from "react-icons/fi";
+} from 'react-icons/gi';
+import { FiMenu } from 'react-icons/fi';
 
-import Chat from "./Chat";
-import Inventar from "../gamElements/Inventar";
-import Game from "../../Game";
-import ArenaFight from "./ArenaFight";
+import Chat from './Chat';
+import Inventar from '../gamElements/Inventar';
+import Game from '../../Game';
+import ArenaFight from './ArenaFight';
+import PokeSocketClient from '../../socket/socket';
 
-const map = require("../../assets/unbenannt.png");
+const map = require('../../assets/unbenannt.png');
 
-export default function MainMenu({ user, changeUser, audioMainTheme }) {
+let client = null;
+
+export default function MainMenu({ user, changeUser }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
   const [mapVisible, setMapVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
-  const [inArenaFight, setInArenaFight] = useState(true);
-  const [socketID, setSocketID] = useState();
+  const [inArenaFight, setInArenaFight] = useState(false);
+  const [socketClient, setSocketClient] = useState(null);
 
   function handleDelete() {}
 
   function handleChangeName() {}
 
   function handleLogout() {
-    audioMainTheme();
-    changeUser({ username: "", token: "", loggedIn: false });
+    changeUser({ username: '', token: '', loggedIn: false });
   }
 
   function changeSetInArena() {
     setInArenaFight(!inArenaFight);
   }
 
-  function changeSocketID(value) {
-    setSocketID(value);
-  }
-
-  console.log(socketID);
-
   let game = useRef();
-  // let client = useRef();
 
   useEffect(() => {
+    //Initialize Game
     if (!game.current) {
       game.current = new Game(
         () => {},
         () => {}
       );
     }
-    // client.current = new Client(
-    //   setIsConnected,
-    //   setElapsedTics,
-    //   game.current,
-    //   logAction
-    // );
+
+    const server = process.env.REACT_APP_SOCKET_SERVER;
+
+    if (!client) {
+      client = new PokeSocketClient(server, user);
+      client.socket.on('connect', () => {
+        console.log('client connected', client.socket.id);
+      });
+      setSocketClient(client);
+    }
+
+    return () => {
+      socketClient?.socket?.disconnect();
+    };
   }, []);
 
   return (
     <div className="main-game-div">
       <div className="game-div">
-        {/* HERE GAMECOMPONENT */}
+        {/* HERE GAME COMPONENT */}
         <div className="game-overlay">
           <GiSchoolBag
             className="inv-btn"
@@ -71,8 +75,10 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               setMenuVisible(false);
             }}
           />
+
           <div className="menu-div">
-            <div className="information-div">
+            <div>{user.username}</div>
+            <div className="friends-div">
               <FiMenu
                 className="menu-btn"
                 onClick={() => setMenuVisible(!menuVisible)}
@@ -80,7 +86,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               <p className="level">Friends</p>
               <GiPerson className="money-symbole" />
             </div>
-            <div className="friends-div">
+            <div className="information-div">
               <FiMenu
                 className="menu-btn"
                 onClick={() => setMenuVisible(!menuVisible)}
@@ -91,6 +97,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               </p>
             </div>
           </div>
+
           <GiTreasureMap
             className="map-btn"
             onClick={() => {
@@ -99,7 +106,9 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
               setMenuVisible(false);
             }}
           />
-          <Chat user={user} changeSocketID={changeSocketID} />
+          {socketClient && <Chat user={user} client={socketClient} />}
+
+          {/* Conditional Rendering: */}
 
           {mapVisible ? (
             <div className="game-map-div">
@@ -107,13 +116,13 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
             </div>
           ) : null}
 
-          {inventaryVisible ? <Inventar /> : null}
+          {inventaryVisible ? <Inventar user={user} /> : null}
 
           {menuVisible ? (
             <div
               className="game-menu-div"
               onClick={(e) =>
-                e.target.className === "game-menu-div"
+                e.target.className === 'game-menu-div'
                   ? setMenuVisible(false)
                   : null
               }
@@ -135,6 +144,7 @@ export default function MainMenu({ user, changeUser, audioMainTheme }) {
           )}
         </div>
       </div>
+      <div>Socket: {socketClient?.socket.id}</div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import http from '../../api/http-common';
 
 export default function Login({ changeUser }) {
   const [usernameInput, setusernameInput] = useState('');
@@ -17,8 +18,10 @@ export default function Login({ changeUser }) {
       password: passwordInput,
     });
 
-    axios
-      .post('http://express-db-pokefight.herokuapp.com/user/login', {
+    http
+      .post('/user/login', {
+        // axios
+        //   .post('https://express-db-pokefight.herokuapp.com/user/login', {
         user: usernameInput,
         type: type,
         password: passwordInput,
