@@ -3,7 +3,7 @@ import {
   GiSchoolBag,
   GiTreasureMap,
   GiTwoCoins,
-  GiPerson,
+  GiPerson
 } from 'react-icons/gi';
 import { FiMenu } from 'react-icons/fi';
 
