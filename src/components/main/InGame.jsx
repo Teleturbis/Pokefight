@@ -271,13 +271,22 @@ export default function MainMenu({ user, changeUser }) {
           </div>
         </div>
       </div>
-      <div>Socket: {socketClient?.socket.id}</div>
+      {/* <div>
+        <button
+          className="chat-userinput-button chat-userinput-input"
+          type="button"
+          onClick={() => setInArenaFight(!inArenaFight)}
+        >
+          Fight!
+        </button>
+      </div> */}
+      {/* <div>Socket: {socketClient?.socket.id}</div>
       <div>
         <pre>{info}</pre>
       </div>
       <div>
         <pre>{JSON.stringify(user, null, 2)}</pre>
-      </div>
+      </div> */}
     </div>
   );
 }
