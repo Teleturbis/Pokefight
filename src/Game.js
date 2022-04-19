@@ -14,13 +14,13 @@ export default class Game {
 
     this.app = new PIXI.Application({
       backgroundColor: 0x1099bb,
-      antialias: true
+      antialias: true,
     });
 
     document.querySelector('.game-div').appendChild(this.app.view);
 
-    // const parent = this.app.view.parentNode;
-    // this.app.renderer.resize(1280, 720);+
+    const parent = this.app.view.parentNode;
+    this.app.renderer.resize(1080, 1000);
 
     // Scale mode for all textures, will retain pixelation
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
@@ -147,8 +147,8 @@ export default class Game {
       value: {
         x: this.player.x,
         y: this.player.y,
-        skin: this.skin
-      }
+        skin: this.skin,
+      },
     };
     this.client.socket.emit('action-event', joinAction);
     this.client.socket.emit('msg-event', `${this.user.username} has joined`);
@@ -178,7 +178,7 @@ export default class Game {
       x: x,
       y: y,
       duration: 1,
-      onComplete: () => (mob.moving = false)
+      onComplete: () => (mob.moving = false),
     });
   }
 
@@ -218,7 +218,7 @@ export default class Game {
       left: false,
       right: false,
       up: false,
-      down: false
+      down: false,
     };
 
     let speed = 0;
@@ -239,8 +239,8 @@ export default class Game {
         id: this.user.userID,
         value: {
           x: this.player.x,
-          y: this.player.y
-        }
+          y: this.player.y,
+        },
       };
 
       this.client.socket.emit('action-event', moveAction);
