@@ -275,17 +275,16 @@ export default function MainMenu({ user, changeUser }) {
           </div>
         </div>
       </div>
-      {/* <div>Socket: {client?.socket.id}</div> */}
       <button onClick={() => setInArenaFight(!inArenaFight)}>
         Fight now!!
       </button>
-      <div>Socket: {socketClient?.socket.id}</div>
-      <div>
+      {/* <div>Socket: {socketClient?.socket.id}</div> */}
+      {/* <div>
         <pre>{info}</pre>
       </div>
       <div>
         <pre>{JSON.stringify(user, null, 2)}</pre>
-      </div>
+      </div> */}
     </div>
   );
 }
