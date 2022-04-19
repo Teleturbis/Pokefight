@@ -7,7 +7,7 @@ export default class PokeSocketClient {
     // this.socket = io('http://localhost:3003', {
     this.socket = io(server, {
       // auth: { userId: '624b76d47607ffd9e180f7e0' },
-      auth: { userId: user.userID, username: user.username },
+      auth: { userId: user.userID, username: user.username }
     });
 
     this.listener = [];
@@ -21,7 +21,7 @@ export default class PokeSocketClient {
       'friend-accept-received',
       'friend-reject-received',
       'connect-received',
-      'action-gamestate-received',
+      'action-gamestate-received'
     ];
 
     this.socketEvents.forEach((event) => {

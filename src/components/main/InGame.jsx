@@ -1,21 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { FiMenu } from 'react-icons/fi';
 import {
+  GiPerson,
   GiSchoolBag,
   GiTreasureMap,
-  GiTwoCoins,
-  GiPerson
+  GiTwoCoins
 } from 'react-icons/gi';
-import { FiMenu } from 'react-icons/fi';
-
-import Chat from './Chat';
-import Inventar from '../gamElements/Inventar';
 import Game from '../../Game';
-import ArenaFight from './ArenaFight';
 import PokeSocketClient from '../../socket/socket';
+import Inventar from '../gamElements/Inventar';
+import ArenaFight from './ArenaFight';
+import Chat from './Chat';
 
 const map = require('../../assets/unbenannt.png');
-
-let client = null;
 
 export default function MainMenu({ user, changeUser }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
@@ -23,6 +20,7 @@ export default function MainMenu({ user, changeUser }) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [inArenaFight, setInArenaFight] = useState(false);
   const [socketClient, setSocketClient] = useState(null);
+  const [info, setInfo] = useState('');
 
   function handleDelete() {}
 
@@ -37,24 +35,19 @@ export default function MainMenu({ user, changeUser }) {
   }
 
   let game = useRef();
+  let client = useRef();
 
   useEffect(() => {
     //Initialize Game
-    if (!game.current) {
-      game.current = new Game(
-        () => {},
-        () => {}
-      );
-    }
-
-    const server = process.env.REACT_APP_SOCKET_SERVER;
-
-    if (!client) {
+    if (!game.current && !client.current) {
+      const server = process.env.REACT_APP_SOCKET_SERVER;
       client = new PokeSocketClient(server, user);
       client.socket.on('connect', () => {
         console.log('client connected', client.socket.id);
       });
       setSocketClient(client);
+
+      game.current = new Game(client, user, setInfo);
     }
 
     return () => {
@@ -145,6 +138,12 @@ export default function MainMenu({ user, changeUser }) {
         </div>
       </div>
       <div>Socket: {socketClient?.socket.id}</div>
+      <div>
+        <pre>{info}</pre>
+      </div>
+      <div>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+      </div>
     </div>
   );
 }

@@ -59,7 +59,7 @@ export function pickRandomMob(mobs) {
   return mobs[Math.floor(Math.random() * mobs.length)];
 }
 
-export const skins = ['blue', 'green', 'orange', 'purple', 'red'];
+export const skins = ['blue', 'green', 'orange', 'purple', 'tan'];
 
 export function weightedPick(arr) {
   // Get the max weight
@@ -79,8 +79,4 @@ export function weightedPick(arr) {
   });
 
   return result;
-}
-
-export function distance(p1, p2) {
-  return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
 }

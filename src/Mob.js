@@ -1,31 +1,46 @@
 import * as PIXI from 'pixi.js';
-import { Sprite } from 'pixi.js';
 
-export class Mob extends Sprite {
+export class Mob {
   sprite;
 
-  constructor(app, id, x, y, skin) {
-    super();
-
+  constructor(app, world, id, x, y, skin) {
     // console.log(`Mob id:${id}, skin:${skin}, x:${x}, y:${y}`);
 
     this.app = app;
+    this.world = world;
     this.id = id;
 
     this.moving = false;
 
+    // if (!skin)
+    skin = 'blue';
+    console.log('Mob.constructor', skin);
     this.sheet = this.packSpriteSheet(
       new PIXI.BaseTexture.from(this.app.loader.resources[skin].url)
     );
 
     this.sprite = new PIXI.AnimatedSprite(this.sheet.stand);
 
+    const displayText =
+      id.toString().length > 3 ? id.toString().substr(0, 3) : id.toString();
+    this.text = new PIXI.Text(displayText, {
+      fontSize: '12px',
+      fill: id === -1 ? '#000000' : '#ffffff'
+    });
+    this.world.addChild(this.text);
+
     this.sprite.x = x;
     this.sprite.y = y;
 
+    this.world.addChild(this.sprite);
     this.setSkin(skin);
 
     this.app.ticker.add(this.onFrame.bind(this));
+  }
+
+  destroy() {
+    this.world.removeChild(this.sprite);
+    this.app.ticker.remove(this.onFrame.bind(this));
   }
 
   get x() {
@@ -34,6 +49,7 @@ export class Mob extends Sprite {
 
   set x(value) {
     this.sprite.x = value;
+    this.text.x = value - this.text.width / 2;
   }
 
   get y() {
@@ -42,6 +58,7 @@ export class Mob extends Sprite {
 
   set y(value) {
     this.sprite.y = value;
+    this.text.y = value - 10;
   }
 
   face(value) {
@@ -56,9 +73,9 @@ export class Mob extends Sprite {
 
     const coords = { x: this.sprite.x, y: this.sprite.y };
 
-    this.removeChild(this.sprite);
+    this.world.removeChild(this.sprite);
     this.sprite = new PIXI.AnimatedSprite(this.sheet.stand);
-    this.addChild(this.sprite);
+    this.world.addChild(this.sprite);
 
     this.sprite.x = coords.x;
     this.sprite.y = coords.y;
@@ -100,3 +117,7 @@ export class Mob extends Sprite {
 }
 
 export class Player extends Mob {}
+
+export class Skin {
+  // constructor(path) {}
+}

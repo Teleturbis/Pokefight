@@ -52,6 +52,7 @@ export default class Client {
   generateTicObject() {
     let t = { actions: [] };
 
+    const mob = pickRandomMob(this.game.mobs.filter((m) => m.id !== -1));
     for (let i = 0; i < behavior.maxActionsPerTic; i++) {
       switch (weightedPick(behavior.actionsWeight).value) {
         case 'join':
@@ -59,10 +60,14 @@ export default class Client {
             t.actions.push(generateJoinAction());
           break;
         case 'leave':
-          // todo
+          if (mob) {
+            t.actions.push({
+              id: mob.id,
+              action: 'leave'
+            });
+          }
           break;
         case 'move':
-          const mob = pickRandomMob(this.game.mobs.filter((m) => m.id !== -1));
           if (mob) t.actions.push(generateMoveAction(mob));
           break;
         default:
@@ -74,13 +79,16 @@ export default class Client {
   }
 
   onInterval() {
-    this.applyTicObject(this.generateTicObject());
+    // this.applyTicObject(this.generateTicObject());
+    // Emit game changes
+    // const x = this.game.player.x;
+    // const y = this.game.player.y;
   }
 
-  applyTicObject(u) {
-    this.applyActions(u.actions);
-    this.setElapsedTics((prev) => prev + 1);
-  }
+  // applyTicObject(u) {
+  //   this.applyActions(u.actions);
+  //   this.setElapsedTics((prev) => prev + 1);
+  // }
 
   applyActions(actions) {
     actions.forEach((action) => {
@@ -96,7 +104,7 @@ export default class Client {
           );
           break;
         case 'leave':
-          // todo
+          this.game.removeMob(action.id);
           break;
         case 'move':
           this.game.moveMob(action.id, action.value.x, action.value.y);
