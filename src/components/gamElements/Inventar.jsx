@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import http from '../../api/http-common';
 
@@ -7,15 +6,10 @@ export default function Inventar({ user }) {
   const [items, setItems] = useState(false);
   const [userPokemon, setUserPokemon] = useState([]);
 
-  let temp = [];
-
   useEffect(() => {
-    //Get Characterinventary
-    // http.get(`/character/?userid=${user.userID}`)
-    axios
+    http
       .get(
-        `https://express-db-pokefight.herokuapp.com/character/?userid=${user.userID}`
-        // `https://express-db-pokefight.herokuapp.com/character/624f423e28a61a1a37af9928`
+        `/character/?userid=${user.userID}`
       )
       .then((res) => {
         console.log(res.data);
@@ -23,19 +17,18 @@ export default function Inventar({ user }) {
       });
 
     //Get all Items
-    axios
-      .get(`https://express-db-pokefight.herokuapp.com/item/`)
+    http
+      .get(`/item/`)
       .then((res) => setItems(res.data));
   }, []);
 
   useEffect(() => {
-    // If the inventory is loaded, fetch all of the inventory items
     if (userInv) {
       let arr = [];
       userInv.pokemons.forEach((pokemon) => {
         //Get Pokemon
-        const url = `https://express-db-pokefight.herokuapp.com/pokemon/${pokemon.pokemonid}`;
-        axios.get(url).then((res) => {
+        const url = `/pokemon/${pokemon.pokemonid}`;
+        http.get(url).then((res) => {
           console.log('downloaded', url);
           arr.push(res);
           if (arr.length === userInv.pokemons.length) {
@@ -68,7 +61,7 @@ export default function Inventar({ user }) {
             <div className="inv-items">
               {userInv.items.map((item, index) => (
                 <div key={index}>
-                  <img src={items.find((el) => el._id === item.itemid).icon} />
+                  <img src={items.find((el) => el._id === item.itemid).icon} alt={items.find((el) => el._id === item.itemid).name} />
                   <p>{item.count}</p>
                 </div>
               ))}
@@ -77,7 +70,7 @@ export default function Inventar({ user }) {
               {userPokemon.map((pokemon, index) => (
                 <div key={index}>
                   <p>{pokemon.data.name}</p>
-                  <img src={pokemon.data.gif.front} />
+                  <img src={pokemon.data.gif.front} alt="Pokemon" />
                   <p>HP: {pokemon.data.stats.hp}</p>
                   <p>AP: {pokemon.data.stats.attack}</p>
                   <p>DP: {pokemon.data.stats.defense}</p>
@@ -94,4 +87,3 @@ export default function Inventar({ user }) {
     </>
   );
 }
-//624bdc13d64105dd9a2975b4
