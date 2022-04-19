@@ -25,23 +25,23 @@ export default class PokeSocketClient {
     ];
 
     this.socketEvents.forEach((event) => {
-      this.socket.on(event, (messageObj) => {
-        this.callListeners(event, messageObj);
+      this.socket.on(event, (...messageObjects) => {
+        this.callListeners(event, ...messageObjects);
       });
     });
   }
 
-  callListeners(event, message) {
+  callListeners(event, ...messages) {
     this.listener.forEach((l) => {
       if (l.event === event) {
-        l.callback(message);
+        l.callback(...messages);
       }
     });
   }
 
   addListener(type, event, callback) {
     if (!this.listener.find((l) => l.type === type && l.event === event)) {
-      console.log('addListener', type, event);
+      // console.log('addListener', type, event);
       this.listener.push({ type: type, event: event, callback: callback });
     }
   }

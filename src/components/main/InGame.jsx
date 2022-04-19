@@ -28,6 +28,11 @@ export default function MainMenu({ user, changeUser }) {
 
   function handleLogout() {
     changeUser({ username: '', token: '', loggedIn: false });
+    if (client) {
+      client.removeListener('game');
+      client.socket.disconnect();
+      client = null;
+    }
   }
 
   function changeSetInArena() {
@@ -44,6 +49,11 @@ export default function MainMenu({ user, changeUser }) {
       client = new PokeSocketClient(server, user);
       client.socket.on('connect', () => {
         console.log('client connected', client.socket.id);
+        setSocketClient(client);
+      });
+
+      client.addListener('game', 'connect-received', (userId, socketList) => {
+        console.log('connect-received', userId, socketList);
       });
       setSocketClient(client);
 
