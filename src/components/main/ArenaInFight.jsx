@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import audio from "../../assets/sounds/hits/hit32.mp3";
+import React, { useEffect, useState, useRef } from 'react';
+import http from '../../api/http-common';
 
-import beep from "../../assets/sounds/count/count.mp3";
+import audio from '../../assets/sounds/hits/hit32.mp3';
+
+import beep from '../../assets/sounds/count/count.mp3';
 
 export default function ArenaInFight({
   userPokemon,
@@ -18,14 +20,14 @@ export default function ArenaInFight({
 
   useEffect(() => {
     if (userPokemon.stats.speed > enemyPokemon.stats.speed) {
-      setTurn("user");
+      setTurn('user');
     } else if (userPokemon.stats.speed < enemyPokemon.stats.speed) {
-      setTurn("enemy");
+      setTurn('enemy');
     } else {
       if (Math.floor(Math.random() * 10) > 5) {
-        setTurn("user");
+        setTurn('user');
       } else {
-        setTurn("enemy");
+        setTurn('enemy');
       }
     }
   }, []);
@@ -61,7 +63,7 @@ export default function ArenaInFight({
   }
 
   useEffect(() => {
-    if (turn === "enemy" && enemyHP > 0) {
+    if (turn === 'enemy' && enemyHP > 0) {
       const attack =
         enemyPokemon.moves[
           Math.floor(Math.random() * enemyPokemon.moves.length)
@@ -84,29 +86,26 @@ export default function ArenaInFight({
           console.log(attackValue);
         }
 
-        setTurn("user");
+        setTurn('user');
       }, 2000);
     }
   }, [turn]);
 
   useEffect(() => {
     if (enemyHP <= 0) {
-      window.alert("You won the fight!!!");
+      window.alert('You won the fight!!!');
       changeSetInArena();
     }
     if (userHP <= 0) {
-      window.alert("You lost the Fight!!!");
+      window.alert('You lost the Fight!!!');
       changeSetInArena();
     }
 
-    http.put(``, {
-      
-    })
-
+    http.put(``, {});
   }, [enemyHP, userHP]);
 
   function userAttack(attack) {
-    if (turn === "user") {
+    if (turn === 'user') {
       const attackValue =
         (attack.value / 2) * (1 + enemyPokemon.stats.attack / 100);
 
@@ -123,7 +122,7 @@ export default function ArenaInFight({
         );
         soundEffect();
       }
-      setTurn("enemy");
+      setTurn('enemy');
     } else {
       window.alert("It's not your Turn!");
     }
@@ -134,15 +133,15 @@ export default function ArenaInFight({
   }
 
   return (
-    <div className="arenainFight-main">
+    <div className='arenainFight-main'>
       {countOverlay && (
-        <div className="countOverlay">
-          <h1>{count === 0 ? "FIGHT!" : count}</h1>
+        <div className='countOverlay'>
+          <h1>{count === 0 ? 'FIGHT!' : count}</h1>
         </div>
       )}
       {count < 0 && (
-        <div className="fight-div">
-          <div className="enemy-div" style={{ display: "flex" }}>
+        <div className='fight-div'>
+          <div className='enemy-div' style={{ display: 'flex' }}>
             <div>
               <p>A wild {enemyPokemon.name} appered</p>
               <p>HP: {enemyHP}</p>
@@ -151,7 +150,7 @@ export default function ArenaInFight({
             </div>
             <img src={enemyPokemon.gif.front} />
           </div>
-          <div className="user-div" style={{ display: "flex" }}>
+          <div className='user-div' style={{ display: 'flex' }}>
             <img src={userPokemon.gif.back} />
             <div>
               <div>
@@ -159,7 +158,7 @@ export default function ArenaInFight({
                 <p>FP: {userPokemon.stats.attack}</p>
                 <p>DP: {userPokemon.stats.defense}</p>
               </div>
-              <div className="actions-div">
+              <div className='actions-div'>
                 {userPokemon.moves.map((el, index) => (
                   <button key={index} onClick={() => userAttack(el)}>
                     {el.name}
