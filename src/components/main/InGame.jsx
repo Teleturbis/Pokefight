@@ -4,7 +4,7 @@ import {
   GiPerson,
   GiSchoolBag,
   GiTreasureMap,
-  GiTwoCoins
+  GiTwoCoins,
 } from 'react-icons/gi';
 import Game from '../../Game';
 import PokeSocketClient from '../../socket/socket';
@@ -33,6 +33,32 @@ export default function MainMenu({ user, changeUser }) {
       client.socket.disconnect();
       client = null;
     }
+  }
+
+  useInterval(() => {
+    if (!inArenaFight) {
+      if (Math.floor(Math.random() * 1000) <= 1) {
+        setInArenaFight(true);
+      }
+    }
+  }, 500);
+
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
   }
 
   function changeSetInArena() {
@@ -66,12 +92,12 @@ export default function MainMenu({ user, changeUser }) {
   }, []);
 
   return (
-    <div className="main-game-div">
-      <div className="game-div">
+    <div className='main-game-div'>
+      <div className='game-div'>
         {/* HERE GAME COMPONENT */}
-        <div className="game-overlay">
+        <div className='game-overlay'>
           <GiSchoolBag
-            className="inv-btn"
+            className='inv-btn'
             onClick={() => {
               setInventaryVisible(!inventaryVisible);
               setMapVisible(false);
@@ -79,30 +105,30 @@ export default function MainMenu({ user, changeUser }) {
             }}
           />
 
-          <div className="menu-div">
+          <div className='menu-div'>
             <div>{user.username}</div>
-            <div className="friends-div">
+            <div className='friends-div'>
               <FiMenu
-                className="menu-btn"
+                className='menu-btn'
                 onClick={() => setMenuVisible(!menuVisible)}
               />
-              <p className="level">Friends</p>
-              <GiPerson className="money-symbole" />
+              <p className='level'>Friends</p>
+              <GiPerson className='money-symbole' />
             </div>
-            <div className="information-div">
+            <div className='information-div'>
               <FiMenu
-                className="menu-btn"
+                className='menu-btn'
                 onClick={() => setMenuVisible(!menuVisible)}
               />
-              <p className="level">Level 99</p>
-              <p className="money">
-                <GiTwoCoins className="money-symbole" /> 999
+              <p className='level'>Level 99</p>
+              <p className='money'>
+                <GiTwoCoins className='money-symbole' /> 999
               </p>
             </div>
           </div>
 
           <GiTreasureMap
-            className="map-btn"
+            className='map-btn'
             onClick={() => {
               setMapVisible(!mapVisible);
               setInventaryVisible(false);
@@ -114,8 +140,8 @@ export default function MainMenu({ user, changeUser }) {
           {/* Conditional Rendering: */}
 
           {mapVisible ? (
-            <div className="game-map-div">
-              <img src={map} className="game-map" />
+            <div className='game-map-div'>
+              <img src={map} className='game-map' />
             </div>
           ) : null}
 
@@ -123,14 +149,14 @@ export default function MainMenu({ user, changeUser }) {
 
           {menuVisible ? (
             <div
-              className="game-menu-div"
+              className='game-menu-div'
               onClick={(e) =>
                 e.target.className === 'game-menu-div'
                   ? setMenuVisible(false)
                   : null
               }
             >
-              <div className="game-menu-content">
+              <div className='game-menu-content'>
                 <h1>Menu</h1>
                 <h2>Hey {user.username}!</h2>
                 <button onClick={() => handleLogout()}>Log Out</button>
