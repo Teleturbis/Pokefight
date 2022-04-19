@@ -182,15 +182,15 @@ export default function MainMenu({ user, changeUser }) {
 
   return (
     <div>
-      <div className='main-game-div'>
+      <div className="main-game-div">
         {friendsVisible ? (
           <Friends user={user} client={socketClient} friends={friendsList} />
         ) : null}
-        <div className='game-div'>
+        <div className="game-div">
           {/* HERE GAME COMPONENT */}
-          <div className='game-overlay'>
+          <div className="game-overlay">
             <GiSchoolBag
-              className='inv-btn'
+              className="inv-btn"
               onClick={() => {
                 setInventaryVisible(!inventaryVisible);
                 setMapVisible(false);
@@ -198,32 +198,32 @@ export default function MainMenu({ user, changeUser }) {
               }}
             />
 
-            <div className='menu-div'>
-              <div className='username'>{user.username}</div>
-              <div className='friends-div'>
+            <div className="menu-div">
+              <div className="username">{user.username}</div>
+              <div className="friends-div">
                 <MdPeopleAlt
-                  className='money-symbole'
+                  className="money-symbole"
                   onClick={() => setFriendsVisible(!friendsVisible)}
                 />
-                <p className='level'>
+                <p className="level">
                   Friends{' '}
-                  <span className='friends-count'>({friendsCount})</span>{' '}
+                  <span className="friends-count">({friendsCount})</span>{' '}
                 </p>
               </div>
-              <div className='information-div'>
+              <div className="information-div">
                 <FiMenu
-                  className='menu-btn'
+                  className="menu-btn"
                   onClick={() => setMenuVisible(!menuVisible)}
                 />
-                <p className='level'>Level 99</p>
-                <p className='money'>
-                  <GiTwoCoins className='money-symbole' /> 999
+                <p className="level">Level 99</p>
+                <p className="money">
+                  <GiTwoCoins className="money-symbole" /> 999
                 </p>
               </div>
             </div>
 
             <GiTreasureMap
-              className='map-btn'
+              className="map-btn"
               onClick={() => {
                 setMapVisible(!mapVisible);
                 setInventaryVisible(false);
@@ -241,8 +241,8 @@ export default function MainMenu({ user, changeUser }) {
             {/* Conditional Rendering: */}
 
             {mapVisible ? (
-              <div className='game-map-div'>
-                <img src={map} className='game-map' />
+              <div className="game-map-div">
+                <img src={map} className="game-map" />
               </div>
             ) : null}
 
@@ -250,14 +250,14 @@ export default function MainMenu({ user, changeUser }) {
 
             {menuVisible ? (
               <div
-                className='game-menu-div'
+                className="game-menu-div"
                 onClick={(e) =>
                   e.target.className === 'game-menu-div'
                     ? setMenuVisible(false)
                     : null
                 }
               >
-                <div className='game-menu-content'>
+                <div className="game-menu-content">
                   <h1>Menu</h1>
                   <h2>Hey {user.username}!</h2>
                   <button onClick={() => handleLogout()}>Log Out</button>
@@ -275,7 +275,10 @@ export default function MainMenu({ user, changeUser }) {
           </div>
         </div>
       </div>
-      <button onClick={() => setInArenaFight(!inArenaFight)}>
+      <button
+        className="chat-userinput-button chat-userinput-input"
+        onClick={() => setInArenaFight(!inArenaFight)}
+      >
         Fight now!!
       </button>
       {/* <div>Socket: {socketClient?.socket.id}</div> */}
