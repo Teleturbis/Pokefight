@@ -20,7 +20,7 @@ export default class Game {
     document.querySelector('.game-div').appendChild(this.app.view);
 
     // const parent = this.app.view.parentNode;
-    // this.app.renderer.resize(1280, 720);
+    // this.app.renderer.resize(1280, 720);+
 
     // Scale mode for all textures, will retain pixelation
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;

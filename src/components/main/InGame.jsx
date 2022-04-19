@@ -43,7 +43,7 @@ export default function MainMenu({ user, changeUser }) {
         setInArenaFight(true);
       }
     }
-  }, 500);
+  }, 250);
 
   function useInterval(callback, delay) {
     const savedCallback = useRef();
@@ -273,6 +273,9 @@ export default function MainMenu({ user, changeUser }) {
         </div>
       </div>
       {/* <div>Socket: {client?.socket.id}</div> */}
+      <button onClick={() => setInArenaFight(!inArenaFight)}>
+        Fight now!!
+      </button>
     </div>
   );
 }
