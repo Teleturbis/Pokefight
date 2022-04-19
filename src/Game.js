@@ -44,12 +44,14 @@ export default class Game {
       grid.lineTo(cols * size, i * size);
     }
 
-    this.world.addChild(grid);
+    // this.world.addChild(grid);
 
     // Load Textures, then start the game
     skins.forEach((skin) => {
       this.app.loader.add(skin, `assets/skins/${skin}.png`);
     });
+
+    this.app.loader.add('map', 'assets/map.png');
 
     this.app.loader.load(() => {
       this.start();
@@ -57,6 +59,10 @@ export default class Game {
   }
 
   start() {
+    // Draw the map
+    const map = new PIXI.Sprite(this.app.loader.resources.map.texture);
+    this.world.addChild(map);
+
     // Create the player
     const availableSkins = ['blue', 'green', 'orange', 'purple', 'red'];
     this.player = new Player(
