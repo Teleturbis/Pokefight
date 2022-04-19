@@ -27,7 +27,7 @@ export class Mob {
       fontSize: '12px',
       fill: id === -1 ? '#000000' : '#ffffff'
     });
-    this.world.addChild(this.text);
+    // this.world.addChild(this.text);
 
     this.sprite.x = x;
     this.sprite.y = y;
