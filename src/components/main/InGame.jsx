@@ -5,14 +5,12 @@ import { FiMenu } from 'react-icons/fi';
 import http from '../../api/http-common';
 import Chat from './Chat';
 import Inventar from '../gamElements/Inventar';
-import Game from '../../Game';
 import ArenaFight from './ArenaFight';
+import Game from '../../Game';
 import PokeSocketClient from '../../socket/socket';
 import Friends from '../gamElements/Friends';
 
 const map = require('../../assets/unbenannt.png');
-
-let client = null;
 
 export default function MainMenu({ user, changeUser }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
@@ -23,6 +21,7 @@ export default function MainMenu({ user, changeUser }) {
   const [inArenaFight, setInArenaFight] = useState(false);
   const [socketClient, setSocketClient] = useState(null);
   const [friendsList, setFriendsList] = useState(null);
+  const [info, setInfo] = useState('');
 
   function handleDelete() {}
 
@@ -37,19 +36,12 @@ export default function MainMenu({ user, changeUser }) {
   }
 
   let game = useRef();
+  let client = useRef();
 
   useEffect(() => {
     //Initialize Game
-    if (!game.current) {
-      game.current = new Game(
-        () => {},
-        () => {}
-      );
-    }
-
-    const server = process.env.REACT_APP_SOCKET_SERVER;
-
-    if (!client) {
+    if (!game.current && !client.current) {
+      const server = process.env.REACT_APP_SOCKET_SERVER;
       client = new PokeSocketClient(server, user);
     }
 
@@ -78,23 +70,7 @@ export default function MainMenu({ user, changeUser }) {
         });
       });
 
-      // client.addListener('game', 'connect-received', (userId, socketList) => {
-      //   console.log('connect-received', userId, socketList, socketClient);
-      //   client.socketList = socketList;
-      //   setSocketClient(client);
-      //   getFriendsList(socketList);
-      // });
-
-      // client.addListener(
-      //   'game',
-      //   'disconnect-received',
-      //   (userId, socketList) => {
-      //     console.log('disconnect-received', userId, socketList, socketClient);
-      //     client.socketList = socketList;
-      //     setSocketClient(client);
-      //     getFriendsList(socketList);
-      //   }
-      // );
+      game.current = new Game(client, user, setInfo);
     }
 
     return () => {
@@ -261,7 +237,13 @@ export default function MainMenu({ user, changeUser }) {
           </div>
         </div>
       </div>
-      <div>Socket: {client?.socket.id}</div>
+      <div>Socket: {socketClient?.socket.id}</div>
+      <div>
+        <pre>{info}</pre>
+      </div>
+      <div>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+      </div>
     </div>
   );
 }
