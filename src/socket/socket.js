@@ -11,8 +11,12 @@ export default class PokeSocketClient {
     });
 
     this.listener = [];
+    this.socketList = [];
 
     this.socketEvents = [
+      'connect',
+      'connect-received',
+      'disconnect-received',
       'msg-received',
       'battle-request-received',
       'battle-accept-received',
@@ -20,7 +24,6 @@ export default class PokeSocketClient {
       'friend-request-received',
       'friend-accept-received',
       'friend-reject-received',
-      'connect-received',
       'action-gamestate-received',
     ];
 
