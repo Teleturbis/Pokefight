@@ -10,7 +10,7 @@ export default function Chat({ user, client, setFriendsVisible }) {
 
   const type = 'chat';
   useEffect(() => {
-    console.log('useEffect Chat', client);
+    // console.log('useEffect Chat', client);
 
     // ! hupft zweimal rein, warum??
     if (client) {
