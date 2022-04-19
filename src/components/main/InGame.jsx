@@ -12,6 +12,8 @@ import Friends from '../gamElements/Friends';
 
 const map = require('../../assets/unbenannt.png');
 
+let client = null;
+
 export default function MainMenu({ user, changeUser }) {
   const [inventaryVisible, setInventaryVisible] = useState(false);
   const [mapVisible, setMapVisible] = useState(false);
@@ -36,15 +38,16 @@ export default function MainMenu({ user, changeUser }) {
   }
 
   let game = useRef();
-  let client = useRef();
+  // let client = useRef();
 
   useEffect(() => {
     //Initialize Game
-    if (!game.current && !client.current) {
+    if (!client) {
       const server = process.env.REACT_APP_SOCKET_SERVER;
       client = new PokeSocketClient(server, user);
     }
 
+    console.log('client ', client);
     if (client) {
       client.socket.connect();
       client.addListener('game', 'connect', () => {
