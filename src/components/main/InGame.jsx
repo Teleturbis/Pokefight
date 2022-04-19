@@ -1,13 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { GiSchoolBag, GiTreasureMap, GiTwoCoins } from 'react-icons/gi';
 import { MdPeopleAlt } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 import http from '../../api/http-common';
 import Chat from './Chat';
-import Inventar from '../gamElements/Inventar';
-import ArenaFight from './ArenaFight';
+import {
+  GiPerson,
+  GiSchoolBag,
+  GiTreasureMap,
+  GiTwoCoins,
+} from 'react-icons/gi';
 import Game from '../../Game';
 import PokeSocketClient from '../../socket/socket';
+import Inventar from '../gamElements/Inventar';
+import ArenaFight from './ArenaFight';
 import Friends from '../gamElements/Friends';
 
 const map = require('../../assets/unbenannt.png');
@@ -33,6 +38,32 @@ export default function MainMenu({ user, changeUser }) {
     changeUser({ username: '', token: '', loggedIn: false });
   }
 
+  useInterval(() => {
+    if (!inArenaFight) {
+      if (Math.floor(Math.random() * 1000) <= 1) {
+        setInArenaFight(true);
+      }
+    }
+  }, 500);
+
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
+
   function changeSetInArena() {
     setInArenaFight(!inArenaFight);
   }
@@ -47,7 +78,7 @@ export default function MainMenu({ user, changeUser }) {
       client = new PokeSocketClient(server, user);
     }
 
-    console.log('client ', client);
+    // console.log('client ', client);
     if (client) {
       client.socket.connect();
       client.addListener('game', 'connect', () => {
