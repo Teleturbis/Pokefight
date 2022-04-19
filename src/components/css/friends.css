@@ -1,0 +1,38 @@
+.div-friends-and-players {
+  padding: 5px 12px 0 5px;
+  font-size: 9pt;
+}
+
+.div-friends {
+  padding-bottom: 2rem;
+}
+
+.div-friends, .div-players {
+  white-space: nowrap;
+}
+
+.div-friends-title, .div-players-title, .div-friends-offtitle {
+  padding: 1rem;
+  color: lightgreen;
+}
+
+.div-friends-offtitle {
+  color: gray;
+}
+.div-friends-offlist {
+  color: lightgray;
+}
+
+.div-players-title {
+  padding-top: 2rem;
+  border-top: 1px dashed #ccc;
+}
+
+.div-friends-list, .div-players-list, .div-friends-offlist  {
+  padding-top: 0.rem;
+  padding-left: 1.5rem;
+  font-size: smaller;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

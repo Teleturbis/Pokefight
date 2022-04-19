@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { MdPeopleAlt } from 'react-icons/md';
 
 let once = true;
 
-export default function Chat({ user, client }) {
+export default function Chat({ user, client, setFriendsVisible }) {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
   // const socket = useRef();
@@ -17,6 +18,7 @@ export default function Chat({ user, client }) {
       once = false;
 
       client.addListener(type, 'msg-received', (message) => {
+        // console.log('>>> chat: msg-received', message);
         message.type = 'msg';
         setMessages((prev) => {
           // messages limit to 100
@@ -44,7 +46,8 @@ export default function Chat({ user, client }) {
               {
                 type: 'battle-request',
                 fromUser: fromUser,
-                msg: `Battle Request from ${fromUser.name}!`,
+                // msg: `Battle Request from ${fromUser.name}!`,
+                msg: `Battle Request!`,
                 user: fromUser,
               },
               ...prev,
@@ -88,7 +91,8 @@ export default function Chat({ user, client }) {
               {
                 type: 'friend-request',
                 fromUser: fromUser,
-                msg: `Friend Request from ${fromUser.name}!`,
+                // msg: `Friend Request from ${fromUser.name}!`,
+                msg: `Friend Request!`,
                 user: fromUser,
               },
               ...prev,
@@ -112,24 +116,15 @@ export default function Chat({ user, client }) {
       client.addListener(type, 'friend-reject-received', (fromUser) => {
         console.log('friend-reject-received', fromUser);
       });
-
-      // // a new player sends this socket-event to you
-      // client.addListener('game', 'connect-received', (fromUser) => {
-      //   console.log('new player has joined', fromUser);
-
-      //   // send this player your gamestate
-      //   const gamestate = null; // todo
-      //   client.socket.emit('action-gamestate-event', gamestate, fromUser);
-      // });
-
-      // // a player sends his gamestate to you
-      // client.addListener('game', 'action-gamestate-received', (fromUser) => {
-      //   console.log('action-gamestate-received', fromUser);
-      // });
     }
 
+    // Scrollbar
+    // console.log('window.SimpleScrollbar', window.SimpleScrollbar);
+    // let scrollDiv = document.querySelector('.chat-messages-div');
+    // window.SimpleScrollbar.initEl(scrollDiv);
+
     return () => {
-      console.log('unmount Chat');
+      console.log('unmount', type);
       client.removeListeners(type);
     };
   }, []);
@@ -237,6 +232,12 @@ export default function Chat({ user, client }) {
     return (
       <>
         <button
+          onClick={() => setFriendsVisible(true)}
+          title="Show Friends List"
+        >
+          <MdPeopleAlt className="money-symbole" />
+        </button>
+        {/* <button
           onClick={() => handleAcceptFriendRequest(message?.user)}
           title="Accept Friend Request"
         >
@@ -247,7 +248,7 @@ export default function Chat({ user, client }) {
           title="Reject Friend Request"
         >
           ⛔️
-        </button>
+        </button> */}
       </>
     );
   }
@@ -292,7 +293,6 @@ export default function Chat({ user, client }) {
                 </button>
               </>
             )}
-            <p className="chat-message-user">[{message?.user?.name}]</p>
           </>
         )}
       </>
@@ -304,15 +304,19 @@ export default function Chat({ user, client }) {
       <div className="chat-messages-div">
         {messages.map((message, index) => (
           <div className="chat-message" key={index}>
-            {message?.type === 'friend-request'
-              ? getPrefixFriendRequest(message)
-              : message?.type === 'battle-request'
-              ? getPrefixBattleRequest(message)
-              : getPrefixMessage(message)}
-
-            {message?.msg && (
-              <p className="chat-message-content">{message?.msg}</p>
-            )}
+            <div className="chat-message-actions">
+              {message?.type === 'friend-request'
+                ? getPrefixFriendRequest(message)
+                : message?.type === 'battle-request'
+                ? getPrefixBattleRequest(message)
+                : getPrefixMessage(message)}
+            </div>
+            <div className="chat-message-text">
+              <p className="chat-message-user">{message?.user?.name}</p>
+              {message?.msg && (
+                <p className="chat-message-content">{message?.msg}</p>
+              )}
+            </div>
           </div>
         ))}
       </div>
